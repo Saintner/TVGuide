@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TVGuide
 //
-//  Created by User on 17/06/22.
+//  Created by Eris Ramirez on 17/06/22.
 //
 
 import UIKit

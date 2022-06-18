@@ -17,6 +17,7 @@
 		CE645D15285D58C700039BDC /* TVGuideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D14285D58C700039BDC /* TVGuideUITests.swift */; };
 		CE645D17285D58C700039BDC /* TVGuideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D16285D58C700039BDC /* TVGuideUITestsLaunchTests.swift */; };
 		CE645D25285D592E00039BDC /* TVGNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D24285D592E00039BDC /* TVGNetworkManager.swift */; };
+		CE645D27285D5A7A00039BDC /* TVGError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D26285D5A7A00039BDC /* TVGError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		CE645D14285D58C700039BDC /* TVGuideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideUITests.swift; sourceTree = "<group>"; };
 		CE645D16285D58C700039BDC /* TVGuideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE645D24285D592E00039BDC /* TVGNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGNetworkManager.swift; sourceTree = "<group>"; };
+		CE645D26285D5A7A00039BDC /* TVGError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				CE645D24285D592E00039BDC /* TVGNetworkManager.swift */,
+				CE645D26285D5A7A00039BDC /* TVGError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				CE645D25285D592E00039BDC /* TVGNetworkManager.swift in Sources */,
 				CE645CF8285D58C500039BDC /* ViewController.swift in Sources */,
 				CE645CF4285D58C500039BDC /* AppDelegate.swift in Sources */,
+				CE645D27285D5A7A00039BDC /* TVGError.swift in Sources */,
 				CE645CF6285D58C500039BDC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

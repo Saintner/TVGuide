@@ -2,7 +2,7 @@
 //  TVGuideUITestsLaunchTests.swift
 //  TVGuideUITests
 //
-//  Created by User on 17/06/22.
+//  Created by Eris Ramirez on 17/06/22.
 //
 
 import XCTest
