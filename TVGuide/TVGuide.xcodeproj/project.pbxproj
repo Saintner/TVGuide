@@ -21,6 +21,12 @@
 		CE645D29285D5CE500039BDC /* TVGEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D28285D5CE500039BDC /* TVGEndpoint.swift */; };
 		CE645D2C285D5D3400039BDC /* TVGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D2B285D5D3400039BDC /* TVGConstants.swift */; };
 		CE645D2E285D982C00039BDC /* TVGAppEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D2D285D982C00039BDC /* TVGAppEndpoints.swift */; };
+		CE645D35285D9AF100039BDC /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D34285D9AF100039BDC /* Interactor.swift */; };
+		CE645D37285D9B1400039BDC /* TVGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D36285D9B1400039BDC /* TVGView.swift */; };
+		CE645D39285D9B7600039BDC /* TVGInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D38285D9B7600039BDC /* TVGInteractor.swift */; };
+		CE645D3B285D9BBC00039BDC /* TVGPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D3A285D9BBC00039BDC /* TVGPresenter.swift */; };
+		CE645D3D285D9CCA00039BDC /* TVGEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D3C285D9CCA00039BDC /* TVGEntity.swift */; };
+		CE645D3F285D9D7B00039BDC /* TVGRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D3E285D9D7B00039BDC /* TVGRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,12 @@
 		CE645D28285D5CE500039BDC /* TVGEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEndpoint.swift; sourceTree = "<group>"; };
 		CE645D2B285D5D3400039BDC /* TVGConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGConstants.swift; sourceTree = "<group>"; };
 		CE645D2D285D982C00039BDC /* TVGAppEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGAppEndpoints.swift; sourceTree = "<group>"; };
+		CE645D34285D9AF100039BDC /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		CE645D36285D9B1400039BDC /* TVGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGView.swift; sourceTree = "<group>"; };
+		CE645D38285D9B7600039BDC /* TVGInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGInteractor.swift; sourceTree = "<group>"; };
+		CE645D3A285D9BBC00039BDC /* TVGPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGPresenter.swift; sourceTree = "<group>"; };
+		CE645D3C285D9CCA00039BDC /* TVGEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEntity.swift; sourceTree = "<group>"; };
+		CE645D3E285D9D7B00039BDC /* TVGRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +124,6 @@
 				CE645D2F285D992900039BDC /* App */,
 				CE645D2A285D5D2400039BDC /* Common */,
 				CE645D23285D58FE00039BDC /* Networking */,
-				CE645CF7285D58C500039BDC /* ViewController.swift */,
 				CE645CF9285D58C500039BDC /* Main.storyboard */,
 				CE645CFC285D58C700039BDC /* Assets.xcassets */,
 				CE645CFE285D58C700039BDC /* LaunchScreen.storyboard */,
@@ -153,6 +164,11 @@
 			isa = PBXGroup;
 			children = (
 				CE645D2B285D5D3400039BDC /* TVGConstants.swift */,
+				CE645D36285D9B1400039BDC /* TVGView.swift */,
+				CE645D38285D9B7600039BDC /* TVGInteractor.swift */,
+				CE645D3A285D9BBC00039BDC /* TVGPresenter.swift */,
+				CE645D3C285D9CCA00039BDC /* TVGEntity.swift */,
+				CE645D3E285D9D7B00039BDC /* TVGRouter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -160,10 +176,28 @@
 		CE645D2F285D992900039BDC /* App */ = {
 			isa = PBXGroup;
 			children = (
-				CE645CF3285D58C500039BDC /* AppDelegate.swift */,
-				CE645CF5285D58C500039BDC /* SceneDelegate.swift */,
+				CE645D31285D9A2F00039BDC /* Features */,
+				CE645D30285D9A2900039BDC /* Core */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		CE645D30285D9A2900039BDC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CE645CF5285D58C500039BDC /* SceneDelegate.swift */,
+				CE645CF3285D58C500039BDC /* AppDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CE645D31285D9A2F00039BDC /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				CE645CF7285D58C500039BDC /* ViewController.swift */,
+				CE645D34285D9AF100039BDC /* Interactor.swift */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,12 +332,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE645D25285D592E00039BDC /* TVGNetworkManager.swift in Sources */,
+				CE645D3D285D9CCA00039BDC /* TVGEntity.swift in Sources */,
 				CE645D2C285D5D3400039BDC /* TVGConstants.swift in Sources */,
 				CE645CF8285D58C500039BDC /* ViewController.swift in Sources */,
+				CE645D39285D9B7600039BDC /* TVGInteractor.swift in Sources */,
+				CE645D35285D9AF100039BDC /* Interactor.swift in Sources */,
 				CE645CF4285D58C500039BDC /* AppDelegate.swift in Sources */,
 				CE645D27285D5A7A00039BDC /* TVGError.swift in Sources */,
 				CE645D29285D5CE500039BDC /* TVGEndpoint.swift in Sources */,
 				CE645D2E285D982C00039BDC /* TVGAppEndpoints.swift in Sources */,
+				CE645D3F285D9D7B00039BDC /* TVGRouter.swift in Sources */,
+				CE645D37285D9B1400039BDC /* TVGView.swift in Sources */,
+				CE645D3B285D9BBC00039BDC /* TVGPresenter.swift in Sources */,
 				CE645CF6285D58C500039BDC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
