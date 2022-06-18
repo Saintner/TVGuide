@@ -18,6 +18,8 @@
 		CE645D17285D58C700039BDC /* TVGuideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D16285D58C700039BDC /* TVGuideUITestsLaunchTests.swift */; };
 		CE645D25285D592E00039BDC /* TVGNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D24285D592E00039BDC /* TVGNetworkManager.swift */; };
 		CE645D27285D5A7A00039BDC /* TVGError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D26285D5A7A00039BDC /* TVGError.swift */; };
+		CE645D29285D5CE500039BDC /* TVGEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D28285D5CE500039BDC /* TVGEndpoint.swift */; };
+		CE645D2C285D5D3400039BDC /* TVGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D2B285D5D3400039BDC /* TVGConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		CE645D16285D58C700039BDC /* TVGuideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE645D24285D592E00039BDC /* TVGNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGNetworkManager.swift; sourceTree = "<group>"; };
 		CE645D26285D5A7A00039BDC /* TVGError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGError.swift; sourceTree = "<group>"; };
+		CE645D28285D5CE500039BDC /* TVGEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEndpoint.swift; sourceTree = "<group>"; };
+		CE645D2B285D5D3400039BDC /* TVGConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		CE645CF2285D58C500039BDC /* TVGuide */ = {
 			isa = PBXGroup;
 			children = (
+				CE645D2A285D5D2400039BDC /* Common */,
 				CE645D23285D58FE00039BDC /* Networking */,
 				CE645CF3285D58C500039BDC /* AppDelegate.swift */,
 				CE645CF5285D58C500039BDC /* SceneDelegate.swift */,
@@ -137,8 +142,17 @@
 			children = (
 				CE645D24285D592E00039BDC /* TVGNetworkManager.swift */,
 				CE645D26285D5A7A00039BDC /* TVGError.swift */,
+				CE645D28285D5CE500039BDC /* TVGEndpoint.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		CE645D2A285D5D2400039BDC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CE645D2B285D5D3400039BDC /* TVGConstants.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +287,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE645D25285D592E00039BDC /* TVGNetworkManager.swift in Sources */,
+				CE645D2C285D5D3400039BDC /* TVGConstants.swift in Sources */,
 				CE645CF8285D58C500039BDC /* ViewController.swift in Sources */,
 				CE645CF4285D58C500039BDC /* AppDelegate.swift in Sources */,
 				CE645D27285D5A7A00039BDC /* TVGError.swift in Sources */,
+				CE645D29285D5CE500039BDC /* TVGEndpoint.swift in Sources */,
 				CE645CF6285D58C500039BDC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
