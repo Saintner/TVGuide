@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol TVGView {
-    var presenter: IBKPresenter? { get  set}
+    var presenter: TVGPresenter? { get  set}
 }
 
 //protocol IBKTableView: IBKView, UITableViewDelegate, UITableViewDataSource {

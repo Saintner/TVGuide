@@ -12,8 +12,8 @@ import UIKit
 typealias EntryPoint = TVGView & UIViewController
 
 // -IBKRouter Base router protocol
-protocol IBKRouter {
+protocol TVGRouter {
     var entry: EntryPoint? { get }
     var data: TVGEntity? { get }
-    static func start(with data:IBKEntity?) -> IBKRouter
+    static func start(with data:TVGEntity?) -> TVGRouter
 }
