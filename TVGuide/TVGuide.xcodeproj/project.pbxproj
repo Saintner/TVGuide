@@ -30,6 +30,7 @@
 		CE645D47285DA37500039BDC /* TVGShowsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D46285DA37500039BDC /* TVGShowsServices.swift */; };
 		CE645D4A285DA3B900039BDC /* TVGShowsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D49285DA3B900039BDC /* TVGShowsEntity.swift */; };
 		CE645D4C285DA70A00039BDC /* TVGShowsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D4B285DA70A00039BDC /* TVGShowsListRouter.swift */; };
+		CE645D50285DAAA900039BDC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D4F285DAAA900039BDC /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		CE645D46285DA37500039BDC /* TVGShowsServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGShowsServices.swift; sourceTree = "<group>"; };
 		CE645D49285DA3B900039BDC /* TVGShowsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGShowsEntity.swift; sourceTree = "<group>"; };
 		CE645D4B285DA70A00039BDC /* TVGShowsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGShowsListRouter.swift; sourceTree = "<group>"; };
+		CE645D4F285DAAA900039BDC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,12 +171,10 @@
 		CE645D2A285D5D2400039BDC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CE645D4E285DAA4700039BDC /* Extensions */,
+				CE645D4D285DAA3600039BDC /* Viper Pattern Base */,
 				CE645D48285DA3A000039BDC /* Model */,
 				CE645D2B285D5D3400039BDC /* TVGConstants.swift */,
-				CE645D36285D9B1400039BDC /* TVGView.swift */,
-				CE645D38285D9B7600039BDC /* TVGInteractor.swift */,
-				CE645D3A285D9BBC00039BDC /* TVGPresenter.swift */,
-				CE645D3E285D9D7B00039BDC /* TVGRouter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -231,6 +231,25 @@
 				CE645D49285DA3B900039BDC /* TVGShowsEntity.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CE645D4D285DAA3600039BDC /* Viper Pattern Base */ = {
+			isa = PBXGroup;
+			children = (
+				CE645D36285D9B1400039BDC /* TVGView.swift */,
+				CE645D38285D9B7600039BDC /* TVGInteractor.swift */,
+				CE645D3A285D9BBC00039BDC /* TVGPresenter.swift */,
+				CE645D3E285D9D7B00039BDC /* TVGRouter.swift */,
+			);
+			path = "Viper Pattern Base";
+			sourceTree = "<group>";
+		};
+		CE645D4E285DAA4700039BDC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE645D4F285DAAA900039BDC /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +390,7 @@
 				CE645CF4285D58C500039BDC /* AppDelegate.swift in Sources */,
 				CE645D27285D5A7A00039BDC /* TVGError.swift in Sources */,
 				CE645D42285DA1B300039BDC /* TVGShowsListInteractor.swift in Sources */,
+				CE645D50285DAAA900039BDC /* UIViewController+Extension.swift in Sources */,
 				CE645D44285DA24B00039BDC /* TVGShowsListPresenter.swift in Sources */,
 				CE645D4C285DA70A00039BDC /* TVGShowsListRouter.swift in Sources */,
 				CE645D29285D5CE500039BDC /* TVGEndpoint.swift in Sources */,
