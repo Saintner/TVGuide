@@ -8,18 +8,24 @@
 import Foundation
 
 // - base Endpoint handler Struct
-struct IBKEndpoint {
-    var path: TVGConstants.UrlConstants.EndpointsPath
+struct TVGEndpoint {
+    var endpoint: TVGAppEndpoint
     var queryItems: [URLQueryItem] = []
 }
 
+extension TVGEndpoint {
+    static var shows: Self {
+        return TVGEndpoint(endpoint: .getShows)
+    }
+}
+
 // - Endpoint extension to compute a url var to define the URLComponetns
-extension IBKEndpoint {
+extension TVGEndpoint {
     var url: URL {
         var components = URLComponents()
         components.scheme = TVGConstants.UrlConstants.scheme
         components.host = TVGConstants.UrlConstants.host
-        components.path = TVGConstants.UrlConstants.EndpointsPath.path(for: path)
+        components.path = endpoint.rawValue()
         components.queryItems = queryItems
         guard let url = components.url else {
             preconditionFailure("Invalid URL components: \(components)")
