@@ -22,22 +22,23 @@ class TVGShowsListPresenter: TVGPresenter {
     
     var delegate: TVGShowsListPresenterDelegate?
     
-    private var posts = [TVGShowEntity]()
+    private var shows = [TVGShowEntity]()
     private var filteredPosts = [TVGShowEntity]()
     private var isSearchingFilteredPosts: Bool = false
 
     func didSelect(index: Int) {
         guard let router = router as? TVGShowsListRouter else { return }
-        let post = posts[index]
+        let post = shows[index]
         router.routeToDetailPostViewController(with: post)
     }
     
     func getPostsCount() -> Int {
-        return  filteredPosts.count == 0 && !isSearchingFilteredPosts ? posts.count : filteredPosts.count
+//        return  filteredPosts.count == 0 && !isSearchingFilteredPosts ? posts.count : filteredPosts.count
+        return shows.count
     }
     
     func getPostTitle(at index: Int) -> String {
-        return ""
+        return shows[index].name
 //        return filteredPosts.count == 0 && !isSearchingFilteredPosts ? posts[index].title : filteredPosts[index].title
     }
     
@@ -48,22 +49,33 @@ class TVGShowsListPresenter: TVGPresenter {
 //        self.delegate?.reloadTableView()
     }
     
-    func getPostsList() {
+    func viewDidLoad(){
+        self.getShowsList()
+    }
+    
+    private func getShowsList() {
         guard let interactor = interactor as? TVGShowsListInteractor else { return }
         DispatchQueue.global(qos: .background).async {
             interactor.fetchShowsList()
         }
     }
     
+    func getImageData(at row: Int) -> Data {
+        let urlString = shows[row].image.medium
+        let url = URL(string: urlString)
+        let data = try! Data(contentsOf: url!)
+        return data
+    }
+    
     func showLoadingView() -> Bool{
-        return posts.count == 0 && filteredPosts.count == 0 && !isSearchingFilteredPosts
+        return shows.count == 0 && filteredPosts.count == 0 && !isSearchingFilteredPosts
     }
 }
 
 extension TVGShowsListPresenter: TVGShowsListInteractorDelegate {
     
-    func didFetchPostList(with posts: [TVGShowEntity]) {
-        self.posts = posts
+    func didFetchPostList(with shows: [TVGShowEntity]) {
+        self.shows = shows
         DispatchQueue.main.async {
             self.delegate?.reloadTableView()
         }

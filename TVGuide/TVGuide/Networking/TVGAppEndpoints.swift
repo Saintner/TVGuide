@@ -17,7 +17,7 @@ extension TVGAppEndpoint {
     func rawValue() -> String {
         switch self {
         case .getShows:
-            return TGVAPIEndpoints.shows.rawValue
+            return "/" + TGVAPIEndpoints.shows.rawValue
         }
     }
     

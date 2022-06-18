@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol TVGShowsListInteractorDelegate {
-    func didFetchPostList(with posts: [TVGShowEntity])
+    func didFetchPostList(with shows: [TVGShowEntity])
 }
 
 class TVGShowsListInteractor: TVGInteractor {
@@ -32,7 +32,7 @@ class TVGShowsListInteractor: TVGInteractor {
                 break
             }
         } receiveValue: { [weak self] shows in
-            self?.delegate?.didFetchPostList(with: [shows])
+            self?.delegate?.didFetchPostList(with: shows)
         }.store(in: &cancellables)
     }
     

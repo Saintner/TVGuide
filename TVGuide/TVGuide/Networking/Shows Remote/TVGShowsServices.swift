@@ -13,7 +13,7 @@ import Combine
 protocol TVGShowsServicesProtocol {
     var networkManager: TVGNetworkManagerProtocol { get set }
     
-    func fetchShows() -> AnyPublisher<TVGShowEntity,TVGError>
+    func fetchShows() -> AnyPublisher<[TVGShowEntity],TVGError>
 }
 
 // - TVGShowsServices final class to handle Post entity Remote Services
@@ -26,9 +26,9 @@ final class TVGShowsServices: TVGShowsServicesProtocol {
     }
 
     
-    func fetchShows() -> AnyPublisher<TVGShowEntity, TVGError> {
+    func fetchShows() -> AnyPublisher<[TVGShowEntity], TVGError> {
         let endpoint = TVGEndpoint.shows
-        return networkManager.fetch(type: TVGShowEntity.self, url: endpoint.url)
+        return networkManager.fetchArray(type: [TVGShowEntity].self, url: endpoint.url)
     }
     
 }

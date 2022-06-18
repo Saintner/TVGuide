@@ -13,19 +13,19 @@ struct TVGShowEntity: TVGEntity {
     var name: String
     var type: String
     var language: String
-    var genre: [TVGGenre]
+    var genres: [TVGGenre]
     var status: String
-    var runtime: Int
+    var runtime: Int?
     var averageRuntime: Int
     var premiered: String
-    var ended: String
-    var officialSite: String
+    var ended: String?
+    var officialSite: String?
     var schedule: Schedule
     var rating: Rating
     var weight: Int
-    var network: Network
-    var webChannel: String?
-    var dvdCountry: String?
+    var network: Network?
+    var webChannel: Network?
+    var dvdCountry: Network.TVGCountry?
     var externals: Externals
     var image: Image
     var summary: String
@@ -37,14 +37,14 @@ struct TVGShowEntity: TVGEntity {
     }
     
     struct Rating: TVGEntity {
-        var average: Double
+        var average: Double?
     }
     
     struct Network : TVGEntity {
         var id: Int
         var name: String
-        var country: TVGCountry
-        var officialSite: String
+        var country: TVGCountry?
+        var officialSite: String?
         struct TVGCountry: TVGEntity {
             var name: String
             var code: String
@@ -54,8 +54,8 @@ struct TVGShowEntity: TVGEntity {
     
     struct Externals: TVGEntity {
         var tvrage: Int
-        var thetvdb: Int
-        var imdb: Int
+        var thetvdb: Int?
+        var imdb: String?
     }
     
     struct Image: TVGEntity {
