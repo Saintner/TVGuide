@@ -21,12 +21,12 @@ class TVGShowDetailPresenter: TVGPresenter {
     
     var delegate: TVGShowDetailPresenterDelegate?
     private var show: TVGShowEntity
-    private var seasons: [TVGSeasonEntity] = []
+    private var seasons: [Int] = []
     private var episodesShow: Int = 5
     private var seasonsEpisodes: [SeasonEpisodes] = []
     private struct SeasonEpisodes {
         var id: Int
-        var episodes: [TVGEpisodeEntity]
+        var episodes: TVGEpisodeEntity
     }
     
     init(show: TVGShowEntity) {
@@ -54,18 +54,19 @@ class TVGShowDetailPresenter: TVGPresenter {
     }
     
     func getSeasonNumber(at row: Int) -> String {
-        let seasonNumber = seasons[row].number
-        return "Season \(seasonNumber ?? row)"
+        let seasonNumber = seasons[row]
+        return "Season \(seasonNumber)"
     }
     
     func getEpisodesCount(for season: Int) -> Int {
-        let episodes = seasonsEpisodes.first(where: { $0.id == seasons[season].id }).map({ return $0.episodes })
-        return episodes?.count ?? 0
+        let episodes = seasonsEpisodes.filter({$0.episodes.season == seasons[season]})
+        return  episodes.count
     }
     
     func getEpisodeTitle(for season: Int, at row: Int) -> String? {
-        let episode = seasonsEpisodes.first(where: { $0.id == seasons[season].id }).map({ return $0.episodes[row]})
-        return "\(episode?.number ?? 0). " + (episode?.name ?? "")
+        let episodes = seasonsEpisodes.filter({$0.episodes.season == seasons[season]})
+        let episode = episodes[row]
+        return episode.episodes.name
     }
     
     func getDaysAndTimeAired() -> String {
@@ -103,32 +104,35 @@ class TVGShowDetailPresenter: TVGPresenter {
     }
     
     func didSelectEpisode(for season:Int, at row: Int){
-        let episode = seasonsEpisodes.first(where: { $0.id == seasons[season].id }).map({ return $0.episodes[row]})
-        if let episode = episode {
+        let episodes = seasonsEpisodes.filter({$0.episodes.season == seasons[season]})
+        let episode = episodes[row]
             let routing = router as! TVGShowDetailRouter
-            routing.routeToEpisodeDetailViewController(with: episode)
-        }
+        routing.routeToEpisodeDetailViewController(with: episode.episodes)
     }
 }
 
 extension TVGShowDetailPresenter: TVGShowDetailInteractorDelegate {
     
-    func didFetchEpisodesSeason(for id: Int, with episodes: [TVGEpisodeEntity]) {
-        let episode = SeasonEpisodes(id: id, episodes: episodes)
-        seasonsEpisodes.append(episode)
-                    DispatchQueue.main.async {
-                        self.delegate?.reloadTableView()
-                    }
-    }
-    
-    func didFetchSeasonsList(with seasons: [TVGSeasonEntity]) {
-        self.seasons = seasons
-        DispatchQueue.global(qos: .background).async {
-            let interactor = self.interactor as! TVGShowDetailInteractor
+    func didFetchSeasonsList(with seasons: [TVGEpisodeEntity]) {
             for season in seasons {
-                interactor.fetchSeasonEpisodes(with: season.id)
+                let episode = SeasonEpisodes(id: season.season, episodes: season)
+                seasonsEpisodes.append(episode)
             }
+        
+        let seasonsIds = seasons.map { season in
+                return season.season
+            }
+        self.seasons = seasonsIds.unique()
+        DispatchQueue.main.async {
+            self.delegate?.reloadTableView()
         }
     }
     
+}
+
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var seen: Set<Iterator.Element> = []
+        return filter { seen.insert($0).inserted }
+    }
 }

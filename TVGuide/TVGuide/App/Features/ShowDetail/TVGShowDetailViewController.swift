@@ -235,6 +235,14 @@ extension TVGShowDetailViewController: UITableViewDataSource {
     }
 }
 
+extension TVGShowDetailViewController: TVGShowDetailPresenterDelegate {
+    func reloadTableView() {
+        self.tableView.reloadData()
+    }
+    
+    
+}
+
 extension String {
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }

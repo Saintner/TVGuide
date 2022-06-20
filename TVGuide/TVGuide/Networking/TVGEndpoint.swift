@@ -25,7 +25,8 @@ extension TVGEndpoint {
     }
     
     static func seasons(with id:Int) -> Self {
-        return TVGEndpoint(endpoint: .getSeasons(id: id))
+        let queryItem = URLQueryItem(name: "embed", value: "episodes")
+        return TVGEndpoint(endpoint: .getSeasons(id: id), queryItems: [queryItem])
     }
     
     static func episodes(with id:Int) -> Self {

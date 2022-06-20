@@ -23,7 +23,7 @@ extension TVGAppEndpoint {
         case .searchShows:
             return "/" + TVGAPIEndpoints.search.rawValue + "/" + TVGAPIEndpoints.shows.rawValue
         case .getSeasons(let id):
-            return "/" + TVGAPIEndpoints.shows.rawValue + "/\(id)/" + TVGAPIEndpoints.seasons.rawValue
+            return "/" + TVGAPIEndpoints.shows.rawValue + "/\(id)/" + TVGAPIEndpoints.episodes.rawValue
         case .getEpisodes(let id):
             return "/" + TVGAPIEndpoints.seasons.rawValue + "/\(id)/" + TVGAPIEndpoints.episodes.rawValue 
         }

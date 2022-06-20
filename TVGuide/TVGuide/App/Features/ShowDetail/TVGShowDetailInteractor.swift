@@ -9,8 +9,7 @@ import Foundation
 import Combine
 
 protocol TVGShowDetailInteractorDelegate {
-    func didFetchSeasonsList(with seasons: [TVGSeasonEntity])
-    func didFetchEpisodesSeason(for id: Int, with episodes: [TVGEpisodeEntity])
+    func didFetchSeasonsList(with seasons: [TVGEpisodeEntity])
 }
 
 class TVGShowDetailInteractor: TVGInteractor {
@@ -35,18 +34,5 @@ class TVGShowDetailInteractor: TVGInteractor {
             } receiveValue: { [weak self] shows in
                 self?.delegate?.didFetchSeasonsList(with: shows)
             }.store(in: &cancellables)
-    }
-    
-    func fetchSeasonEpisodes(with id: Int){
-        showServices.fetchSeasonEpisodes(with: id).sink { completion in
-            switch completion {
-            case .failure(let error):
-                print(error)
-            case .finished:
-                break
-            }
-        } receiveValue: { [weak self] episodes in
-            self?.delegate?.didFetchEpisodesSeason(for: id, with: episodes)
-        }.store(in: &cancellables)
     }
 }

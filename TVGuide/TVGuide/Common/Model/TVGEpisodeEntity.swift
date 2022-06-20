@@ -20,6 +20,6 @@ struct TVGEpisodeEntity: TVGEntity {
     var runtime: Int
     var rating: TVGShowEntity.Rating
     var image: TVGShowEntity.Image?
-    var summary: String
+    var summary: String?
     var _links: TVGShowEntity.Links
 }

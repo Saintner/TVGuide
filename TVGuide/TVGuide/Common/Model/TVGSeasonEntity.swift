@@ -20,4 +20,5 @@ struct TVGSeasonEntity: TVGEntity {
     var image: TVGShowEntity.Image?
     var summary: String?
     var _links: TVGShowEntity.Links
+    var _embedded: [TVGEpisodeEntity]?
 }
