@@ -10,6 +10,8 @@ import Foundation
 enum TVGAppEndpoint {
     case getShows
     case searchShows
+    case getSeasons(id: Int)
+    case getEpisodes(id: Int)
 }
 
 extension TVGAppEndpoint {
@@ -17,13 +19,17 @@ extension TVGAppEndpoint {
     func rawValue() -> String {
         switch self {
         case .getShows:
-            return "/" + TGVAPIEndpoints.shows.rawValue
+            return "/" + TVGAPIEndpoints.shows.rawValue
         case .searchShows:
-            return "/" + TGVAPIEndpoints.search.rawValue + "/" + TGVAPIEndpoints.shows.rawValue
+            return "/" + TVGAPIEndpoints.search.rawValue + "/" + TVGAPIEndpoints.shows.rawValue
+        case .getSeasons(let id):
+            return "/" + TVGAPIEndpoints.shows.rawValue + "/\(id)/" + TVGAPIEndpoints.seasons.rawValue
+        case .getEpisodes(let id):
+            return "/" + TVGAPIEndpoints.seasons.rawValue + "/\(id)/" + TVGAPIEndpoints.episodes.rawValue 
         }
     }
     
-    private enum TGVAPIEndpoints: String {
+    private enum TVGAPIEndpoints: String {
         case search = "search"
         case singleSearch = "singlesearch"
         case lookup = "lookup"

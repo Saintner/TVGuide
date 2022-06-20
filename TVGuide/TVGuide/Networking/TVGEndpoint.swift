@@ -22,6 +22,14 @@ extension TVGEndpoint {
         let queryItem = URLQueryItem(name: "q", value: text)
         return TVGEndpoint(endpoint: .searchShows, queryItems: [queryItem])
     }
+    
+    static func seasons(with id:Int) -> Self {
+        return TVGEndpoint(endpoint: .getSeasons(id: id))
+    }
+    
+    static func episodes(with id:Int) -> Self {
+        return TVGEndpoint(endpoint: .getEpisodes(id: id))
+    }
 }
 
 // - Endpoint extension to compute a url var to define the URLComponetns

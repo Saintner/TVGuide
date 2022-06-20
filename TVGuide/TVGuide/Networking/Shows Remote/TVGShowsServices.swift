@@ -16,6 +16,10 @@ protocol TVGShowsServicesProtocol {
     func fetchShows() -> AnyPublisher<[TVGShowEntity],TVGError>
     
     func fetchSearchedShows(with text: String) -> AnyPublisher<[TVGSearchedShowEntity],TVGError>
+    
+    func fetchSeasons(with id: Int) -> AnyPublisher<[TVGSeasonEntity],TVGError>
+    
+    func fetchSeasonEpisodes(with id: Int) -> AnyPublisher<[TVGEpisodeEntity],TVGError>
 }
 
 // - TVGShowsServices final class to handle Post entity Remote Services
@@ -37,4 +41,14 @@ final class TVGShowsServices: TVGShowsServicesProtocol {
         return networkManager.fetchArray(type: [TVGSearchedShowEntity].self, url: endpoint.url)
     }
     
+    func fetchSeasons(with id: Int) -> AnyPublisher<[TVGSeasonEntity],TVGError>{
+        let endpoint = TVGEndpoint.seasons(with: id)
+        return networkManager.fetchArray(type: [TVGSeasonEntity].self, url: endpoint.url)
+    }
+    
+    func fetchSeasonEpisodes(with id: Int) -> AnyPublisher<[TVGEpisodeEntity],TVGError>{
+        let endpoint = TVGEndpoint.episodes(with: id)
+        print(endpoint.url)
+        return networkManager.fetchArray(type: [TVGEpisodeEntity].self, url: endpoint.url)
+    }
 }

@@ -168,7 +168,7 @@ class TVGShowDetailViewController: UIViewController, TVGView {
         let topAnchor = NSLayoutConstraint(item: summaryTextView, attribute: .top, relatedBy: .equal, toItem: genresInformationLabel, attribute: .bottom, multiplier: 1, constant: 30)
         let leftAnchor = NSLayoutConstraint(item: summaryTextView, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1, constant: 16)
         let right = NSLayoutConstraint(item: summaryTextView, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1, constant: -16)
-        let height = NSLayoutConstraint(item: summaryTextView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 0.20, constant: 0)
+        let height = NSLayoutConstraint(item: summaryTextView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 0, constant: 150)
         NSLayoutConstraint.activate([topAnchor, leftAnchor, right, height])
     }
     
@@ -192,11 +192,12 @@ class TVGShowDetailViewController: UIViewController, TVGView {
 extension TVGShowDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Seasons"
+        let presenter = presenter as! TVGShowDetailPresenter
+        return presenter.getSeasonNumber(at: section)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 40.0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -208,13 +209,20 @@ extension TVGShowDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let presenter = presenter as? TVGShowDetailPresenter else { return 0 }
-        return presenter.getEpisodesCount()
+        return presenter.getEpisodesCount(for: section)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let presenter = presenter as? TVGShowDetailPresenter else { return 0 }
+        return presenter.getSeasonsCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TVGConstants.defaultCellReuseIdentifier, for: indexPath)
         guard let presenter = presenter as? TVGShowDetailPresenter else { return cell }
-        cell.textLabel!.text =  presenter.getEpisodeTitle()
+        let section = indexPath.section
+        let row = indexPath.row
+        cell.textLabel!.text =  presenter.getEpisodeTitle(for: section, at: row)
         return cell
     }
     
