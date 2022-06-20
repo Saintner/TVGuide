@@ -16,8 +16,8 @@ struct TVGShowEntity: TVGEntity {
     var genres: [TVGGenre]
     var status: String
     var runtime: Int?
-    var averageRuntime: Int
-    var premiered: String
+    var averageRuntime: Int?
+    var premiered: String?
     var ended: String?
     var officialSite: String?
     var schedule: Schedule
@@ -65,7 +65,7 @@ struct TVGShowEntity: TVGEntity {
     
     struct Links: TVGEntity {
         var `self`: Self
-        var previousepisode: PreviousEpisode
+        var previousepisode: PreviousEpisode?
         struct `Self`: TVGEntity {
             var href: String
         }

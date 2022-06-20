@@ -15,7 +15,7 @@ struct TVGEndpoint {
 
 extension TVGEndpoint {
     static var shows: Self {
-        return TVGEndpoint(endpoint: .getShows)
+        return TVGEndpoint(endpoint: .getShows, queryItems: [URLQueryItem(name: "page", value: "1")])
     }
 }
 

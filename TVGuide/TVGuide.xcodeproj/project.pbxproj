@@ -32,6 +32,8 @@
 		CE645D4C285DA70A00039BDC /* TVGShowsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D4B285DA70A00039BDC /* TVGShowsListRouter.swift */; };
 		CE645D50285DAAA900039BDC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D4F285DAAA900039BDC /* UIViewController+Extension.swift */; };
 		CE645D52285DABDD00039BDC /* TVGGenreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D51285DABDD00039BDC /* TVGGenreEntity.swift */; };
+		CE645D54285EF6FF00039BDC /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D53285EF6FF00039BDC /* UIImage+Extension.swift */; };
+		CE645D57285FDB6400039BDC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CE645D56285FDB6400039BDC /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,7 @@
 		CE645D4B285DA70A00039BDC /* TVGShowsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGShowsListRouter.swift; sourceTree = "<group>"; };
 		CE645D4F285DAAA900039BDC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CE645D51285DABDD00039BDC /* TVGGenreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGGenreEntity.swift; sourceTree = "<group>"; };
+		CE645D53285EF6FF00039BDC /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE645D57285FDB6400039BDC /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				CE645D4F285DAAA900039BDC /* UIViewController+Extension.swift */,
+				CE645D53285EF6FF00039BDC /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,6 +276,9 @@
 			dependencies = (
 			);
 			name = TVGuide;
+			packageProductDependencies = (
+				CE645D56285FDB6400039BDC /* SDWebImage */,
+			);
 			productName = TVGuide;
 			productReference = CE645CF0285D58C500039BDC /* TVGuide.app */;
 			productType = "com.apple.product-type.application";
@@ -343,6 +351,9 @@
 				Base,
 			);
 			mainGroup = CE645CE7285D58C500039BDC;
+			packageReferences = (
+				CE645D55285FDB6400039BDC /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = CE645CF1285D58C500039BDC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -400,6 +411,7 @@
 				CE645D29285D5CE500039BDC /* TVGEndpoint.swift in Sources */,
 				CE645D47285DA37500039BDC /* TVGShowsServices.swift in Sources */,
 				CE645D2E285D982C00039BDC /* TVGAppEndpoints.swift in Sources */,
+				CE645D54285EF6FF00039BDC /* UIImage+Extension.swift in Sources */,
 				CE645D3F285D9D7B00039BDC /* TVGRouter.swift in Sources */,
 				CE645D37285D9B1400039BDC /* TVGView.swift in Sources */,
 				CE645D3B285D9BBC00039BDC /* TVGPresenter.swift in Sources */,
@@ -730,6 +742,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE645D55285FDB6400039BDC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE645D56285FDB6400039BDC /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE645D55285FDB6400039BDC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE645CE8285D58C500039BDC /* Project object */;
 }

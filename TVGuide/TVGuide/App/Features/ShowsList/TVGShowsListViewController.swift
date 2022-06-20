@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TVGShowsListViewController: UIViewController, TVGView {
     
@@ -24,8 +25,13 @@ class TVGShowsListViewController: UIViewController, TVGView {
         
         let presenter = presenter as! TVGShowsListPresenter
         presenter.viewDidLoad()
-        setTableView()
+        self.navigationItem.title = "Shows"
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        setTableView()
     }
     
     func setTableView() {
@@ -50,8 +56,8 @@ extension TVGShowsListViewController: TVGShowsListPresenterDelegate {
 
 extension TVGShowsListViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200.0
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
 }
 
@@ -66,8 +72,8 @@ extension TVGShowsListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TVGConstants.defaultCellReuseIdentifier, for: indexPath)
         guard let presenter = presenter as? TVGShowsListPresenter else { return cell }
         cell.textLabel!.text =  presenter.getPostTitle(at: indexPath.row)
-        let image = UIImage(data: presenter.getImageData(at: indexPath.row))
-        cell.imageView?.image = image
+        let row = indexPath.row
+        cell.imageView?.sd_setImage(with: presenter.getImageURL(at: row), placeholderImage: UIImage.placeholder, options: .progressiveLoad, completed: nil)
         return cell
     }
     

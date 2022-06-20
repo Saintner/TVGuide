@@ -60,11 +60,10 @@ class TVGShowsListPresenter: TVGPresenter {
         }
     }
     
-    func getImageData(at row: Int) -> Data {
+    func getImageURL(at row: Int) -> URL? {
         let urlString = shows[row].image.medium
         let url = URL(string: urlString)
-        let data = try! Data(contentsOf: url!)
-        return data
+        return url
     }
     
     func showLoadingView() -> Bool{
