@@ -12,6 +12,8 @@ class TVGShowsListViewController: UIViewController, TVGView {
     
     var presenter: TVGPresenter?
     
+    internal var tableHeader = TVGShowsListHeaderViewTableView()
+    
     var tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: TVGConstants.defaultCellReuseIdentifier)
@@ -56,8 +58,25 @@ extension TVGShowsListViewController: TVGShowsListPresenterDelegate {
 
 extension TVGShowsListViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        tableHeader.delegate = self
+        return tableHeader
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70.0
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
+    }
+}
+
+
+extension TVGShowsListViewController: TVGShowsListHeaderViewTableViewDelegate{
+    func didChangeTextfield(with text: String) {
+        guard let presenter = presenter as? TVGShowsListPresenter else { return }
+        presenter.filterPosts(with: text)
     }
 }
 

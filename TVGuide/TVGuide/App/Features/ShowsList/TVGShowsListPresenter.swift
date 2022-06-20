@@ -33,20 +33,20 @@ class TVGShowsListPresenter: TVGPresenter {
     }
     
     func getPostsCount() -> Int {
-//        return  filteredPosts.count == 0 && !isSearchingFilteredPosts ? posts.count : filteredPosts.count
-        return shows.count
+        return  filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows.count : filteredPosts.count
+//        return shows.count
     }
     
     func getPostTitle(at index: Int) -> String {
-        return shows[index].name
-//        return filteredPosts.count == 0 && !isSearchingFilteredPosts ? posts[index].title : filteredPosts[index].title
+//        return shows[index].name
+        return filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows[index].name : filteredPosts[index].name
     }
     
     func filterPosts(with text: String) {
-//        isSearchingFilteredPosts = text.trimmingCharacters(in: .whitespaces).count != 0
-//        let newPosts = posts.filter({ $0.title.contains(text)})
-//        filteredPosts = newPosts
-//        self.delegate?.reloadTableView()
+        isSearchingFilteredPosts = text.trimmingCharacters(in: .whitespaces).count != 0
+        let newPosts = shows.filter({ $0.name.contains(text)})
+        filteredPosts = newPosts
+        self.delegate?.reloadTableView()
     }
     
     func viewDidLoad(){
