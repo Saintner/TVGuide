@@ -6,7 +6,7 @@
 //
 
 import Foundation
-// To-Do: verify why sometimes the season and episodes aren´t loading at the first time
+
 protocol TVGShowDetailPresenterDelegate {
     func reloadTableView()
 }
@@ -128,11 +128,4 @@ extension TVGShowDetailPresenter: TVGShowDetailInteractorDelegate {
         }
     }
     
-}
-
-extension Sequence where Iterator.Element: Hashable {
-    func unique() -> [Iterator.Element] {
-        var seen: Set<Iterator.Element> = []
-        return filter { seen.insert($0).inserted }
-    }
 }

@@ -23,17 +23,4 @@ class TVGEpisodeDetailInteractor: TVGInteractor {
     init(networkManager: TVGNetworkManagerProtocol) {
         self.showServices = TVGEpisodesServices(networkManager: networkManager)
     }
-    
-//    func fetchEpisode(with id: Int){
-//        showServices.fetchEpisode(with: id).sink { completion in
-//                switch completion {
-//                case .failure(let error):
-//                    print(error)
-//                case .finished:
-//                    break
-//                }
-//            } receiveValue: { [weak self] shows in
-//                self?.delegate?.didFetchEpisode(with: shows)
-//            }.store(in: &cancellables)
-//    }
 }

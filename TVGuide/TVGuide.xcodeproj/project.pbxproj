@@ -40,12 +40,15 @@
 		CE645D602860018000039BDC /* TVGShowDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D5F2860018000039BDC /* TVGShowDetailInteractor.swift */; };
 		CE645D622860028100039BDC /* TVGShowDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D612860028100039BDC /* TVGShowDetailRouter.swift */; };
 		CE645D662860274B00039BDC /* TVGEpisodeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D652860274B00039BDC /* TVGEpisodeEntity.swift */; };
-		CE645D682860285A00039BDC /* TVGSeasonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D672860285A00039BDC /* TVGSeasonEntity.swift */; };
 		CE645D6C286047CC00039BDC /* TVGEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D6B286047CC00039BDC /* TVGEpisodeDetailViewController.swift */; };
 		CE645D6E2860480200039BDC /* TVGEpisodeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D6D2860480200039BDC /* TVGEpisodeDetailPresenter.swift */; };
 		CE645D702860484000039BDC /* TVGEpisdoeDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D6F2860484000039BDC /* TVGEpisdoeDetailInteractor.swift */; };
 		CE645D722860485F00039BDC /* TVGEpisodeDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D712860485F00039BDC /* TVGEpisodeDetailRouter.swift */; };
 		CE645D75286048E700039BDC /* TVGEpisodesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D74286048E700039BDC /* TVGEpisodesServices.swift */; };
+		CE645D782860D82800039BDC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D772860D82800039BDC /* String+Extension.swift */; };
+		CE645D7A2860D84100039BDC /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D792860D84100039BDC /* Sequence+Extension.swift */; };
+		CE645D7C2860D8CA00039BDC /* TVGShowDetailViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D7B2860D8CA00039BDC /* TVGShowDetailViewController+UITableViewDelegate.swift */; };
+		CE645D7E2860D90300039BDC /* TVGShowDetailViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D7D2860D90300039BDC /* TVGShowDetailViewController+UITableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,12 +105,15 @@
 		CE645D5F2860018000039BDC /* TVGShowDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGShowDetailInteractor.swift; sourceTree = "<group>"; };
 		CE645D612860028100039BDC /* TVGShowDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGShowDetailRouter.swift; sourceTree = "<group>"; };
 		CE645D652860274B00039BDC /* TVGEpisodeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEpisodeEntity.swift; sourceTree = "<group>"; };
-		CE645D672860285A00039BDC /* TVGSeasonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGSeasonEntity.swift; sourceTree = "<group>"; };
 		CE645D6B286047CC00039BDC /* TVGEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		CE645D6D2860480200039BDC /* TVGEpisodeDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEpisodeDetailPresenter.swift; sourceTree = "<group>"; };
 		CE645D6F2860484000039BDC /* TVGEpisdoeDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEpisdoeDetailInteractor.swift; sourceTree = "<group>"; };
 		CE645D712860485F00039BDC /* TVGEpisodeDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEpisodeDetailRouter.swift; sourceTree = "<group>"; };
 		CE645D74286048E700039BDC /* TVGEpisodesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGEpisodesServices.swift; sourceTree = "<group>"; };
+		CE645D772860D82800039BDC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CE645D792860D84100039BDC /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
+		CE645D7B2860D8CA00039BDC /* TVGShowDetailViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVGShowDetailViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		CE645D7D2860D90300039BDC /* TVGShowDetailViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVGShowDetailViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,7 +270,6 @@
 				CE645D49285DA3B900039BDC /* TVGShowEntity.swift */,
 				CE645D51285DABDD00039BDC /* TVGGenreEntity.swift */,
 				CE645D652860274B00039BDC /* TVGEpisodeEntity.swift */,
-				CE645D672860285A00039BDC /* TVGSeasonEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +291,8 @@
 			children = (
 				CE645D4F285DAAA900039BDC /* UIViewController+Extension.swift */,
 				CE645D53285EF6FF00039BDC /* UIImage+Extension.swift */,
+				CE645D772860D82800039BDC /* String+Extension.swift */,
+				CE645D792860D84100039BDC /* Sequence+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,6 +304,8 @@
 				CE645D5D2860009D00039BDC /* TVGShowDetailPresenter.swift */,
 				CE645D5F2860018000039BDC /* TVGShowDetailInteractor.swift */,
 				CE645D612860028100039BDC /* TVGShowDetailRouter.swift */,
+				CE645D7B2860D8CA00039BDC /* TVGShowDetailViewController+UITableViewDelegate.swift */,
+				CE645D7D2860D90300039BDC /* TVGShowDetailViewController+UITableViewDataSource.swift */,
 			);
 			path = ShowDetail;
 			sourceTree = "<group>";
@@ -457,6 +466,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE645D25285D592E00039BDC /* TVGNetworkManager.swift in Sources */,
+				CE645D782860D82800039BDC /* String+Extension.swift in Sources */,
+				CE645D7A2860D84100039BDC /* Sequence+Extension.swift in Sources */,
 				CE645D3D285D9CCA00039BDC /* TVGEntity.swift in Sources */,
 				CE645D2C285D5D3400039BDC /* TVGConstants.swift in Sources */,
 				CE645D602860018000039BDC /* TVGShowDetailInteractor.swift in Sources */,
@@ -471,7 +482,6 @@
 				CE645D702860484000039BDC /* TVGEpisdoeDetailInteractor.swift in Sources */,
 				CE645D5C2860007000039BDC /* TVGShowDetailViewController.swift in Sources */,
 				CE645D52285DABDD00039BDC /* TVGGenreEntity.swift in Sources */,
-				CE645D682860285A00039BDC /* TVGSeasonEntity.swift in Sources */,
 				CE645D4C285DA70A00039BDC /* TVGShowsListRouter.swift in Sources */,
 				CE645D622860028100039BDC /* TVGShowDetailRouter.swift in Sources */,
 				CE645D5E2860009D00039BDC /* TVGShowDetailPresenter.swift in Sources */,
@@ -484,9 +494,11 @@
 				CE645D6C286047CC00039BDC /* TVGEpisodeDetailViewController.swift in Sources */,
 				CE645D3F285D9D7B00039BDC /* TVGRouter.swift in Sources */,
 				CE645D37285D9B1400039BDC /* TVGView.swift in Sources */,
+				CE645D7C2860D8CA00039BDC /* TVGShowDetailViewController+UITableViewDelegate.swift in Sources */,
 				CE645D3B285D9BBC00039BDC /* TVGPresenter.swift in Sources */,
 				CE645D662860274B00039BDC /* TVGEpisodeEntity.swift in Sources */,
 				CE645D59285FF15B00039BDC /* TVGShowsListHeaderTableView.swift in Sources */,
+				CE645D7E2860D90300039BDC /* TVGShowDetailViewController+UITableViewDataSource.swift in Sources */,
 				CE645CF6285D58C500039BDC /* SceneDelegate.swift in Sources */,
 				CE645D4A285DA3B900039BDC /* TVGShowEntity.swift in Sources */,
 			);

@@ -26,13 +26,11 @@ class TVGEpisodeDetailRouter: TVGRouter {
         
         presenter.router = router
         presenter.view = view
-//        presenter.delegate = view as? TVGShowDetailPresenterDelegate
         presenter.interactor = interactor
         
         view.presenter = presenter
         
         interactor.presenter = presenter
-//        interactor.delegate = presenter
         router.entry = view as? EntryPoint
         return router
     }
