@@ -24,8 +24,8 @@ class TVGShowsListInteractor: TVGInteractor {
         self.showsServices = TVGShowsServices(networkManager: networkManager)
     }
     
-    func fetchShowsList() {
-        showsServices.fetchShows().sink { completion in
+    func fetchShowsList(with page:Int = 1) {
+        showsServices.fetchShows(with: page).sink { completion in
             switch completion {
             case .failure(let error):
                 print(error)

@@ -25,6 +25,8 @@ class TVGShowsListPresenter: TVGPresenter {
     private var shows = [TVGShowEntity]()
     private var filteredPosts = [TVGShowEntity]()
     private var isSearchingFilteredPosts: Bool = false
+    private var isLoadingNewPage: Bool = false
+    private var currentPage: Int = 1
 
     func didSelect(index: Int) {
         guard let router = router as? TVGShowsListRouter else { return }
@@ -61,10 +63,10 @@ class TVGShowsListPresenter: TVGPresenter {
         self.getShowsList()
     }
     
-    private func getShowsList() {
+    private func getShowsList(with page: Int = 1) {
         guard let interactor = interactor as? TVGShowsListInteractor else { return }
         DispatchQueue.global(qos: .background).async {
-            interactor.fetchShowsList()
+            interactor.fetchShowsList(with: page)
         }
     }
     
@@ -77,13 +79,28 @@ class TVGShowsListPresenter: TVGPresenter {
     func showLoadingView() -> Bool{
         return shows.count == 0 && filteredPosts.count == 0 && !isSearchingFilteredPosts
     }
+    
+    func loadNewPage() {
+        if !isLoadingNewPage {
+            currentPage = currentPage + 1
+            getShowsList(with: currentPage)
+            isLoadingNewPage = true
+        }
+    }
 }
 
 extension TVGShowsListPresenter: TVGShowsListInteractorDelegate {
     
     func didFetchShowsList(with shows: [TVGShowEntity]) {
-        self.shows = shows
+        if self.shows.count == 0 {
+            self.shows = shows
+        }else {
+            self.shows.append(contentsOf: shows)
+        }
         DispatchQueue.main.async {
+            if self.isLoadingNewPage {
+                self.isLoadingNewPage = false
+            }
             self.delegate?.reloadTableView()
         }
     }

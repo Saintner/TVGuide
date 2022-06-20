@@ -30,6 +30,7 @@ class TVGShowsListHeaderViewTableView: UIView {
     }
     
     private func setTextField() {
+        backgroundColor = .white
         searchTextField.delegate = self
         addSubview(searchTextField)
         setTextFieldConstraints()

@@ -13,7 +13,7 @@ import Combine
 protocol TVGShowsServicesProtocol {
     var networkManager: TVGNetworkManagerProtocol { get set }
     
-    func fetchShows() -> AnyPublisher<[TVGShowEntity],TVGError>
+    func fetchShows(with page: Int) -> AnyPublisher<[TVGShowEntity],TVGError>
     
     func fetchSearchedShows(with text: String) -> AnyPublisher<[TVGSearchedShowEntity],TVGError>
     
@@ -31,13 +31,13 @@ final class TVGShowsServices: TVGShowsServicesProtocol {
             self.networkManager = networkManager
     }
     
-    func fetchShows() -> AnyPublisher<[TVGShowEntity], TVGError> {
-        let endpoint = TVGEndpoint.shows
+    func fetchShows(with page: Int) -> AnyPublisher<[TVGShowEntity], TVGError> {
+        let endpoint = TVGEndpoint.shows(with: "\(page)")
         return networkManager.fetchArray(type: [TVGShowEntity].self, url: endpoint.url)
     }
     
     func fetchSearchedShows(with text: String) -> AnyPublisher<[TVGSearchedShowEntity],TVGError> {
-        let endpoint = TVGEndpoint.shows(with: text)
+        let endpoint = TVGEndpoint.searchShows(with: text)
         return networkManager.fetchArray(type: [TVGSearchedShowEntity].self, url: endpoint.url)
     }
     

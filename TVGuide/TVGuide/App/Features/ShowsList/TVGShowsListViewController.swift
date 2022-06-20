@@ -69,6 +69,15 @@ extension TVGShowsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+            let contentYoffset = scrollView.contentOffset.y
+            let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+            if distanceFromBottom < height {
+               let presenter = presenter as! TVGShowsListPresenter
+                presenter.loadNewPage()
+            }
+    }
 }
 
 

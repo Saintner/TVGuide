@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// To-Do: verify why sometimes the season and episodes aren´t loading at the first time
 protocol TVGShowDetailPresenterDelegate {
     func reloadTableView()
 }
@@ -84,9 +84,9 @@ class TVGShowDetailPresenter: TVGPresenter {
             return genre.rawValue
         }
         for genre in genresMapper {
-            genres = genres + genre + ", "
+            let index = genresMapper.firstIndex(of: genre)
+            genres = (index! + 1) == genresMapper.count ? genres + genre : genres + genre + ", "
         }
-        genres.removeLast(2)
         return genres
     }
     
@@ -104,7 +104,7 @@ class TVGShowDetailPresenter: TVGPresenter {
     
     func didSelectEpisode(for season:Int, at row: Int){
         let episode = seasonsEpisodes.first(where: { $0.id == seasons[season].id }).map({ return $0.episodes[row]})
-        if let episode = episode as? TVGEpisodeEntity {
+        if let episode = episode {
             let routing = router as! TVGShowDetailRouter
             routing.routeToEpisodeDetailViewController(with: episode)
         }
@@ -116,11 +116,9 @@ extension TVGShowDetailPresenter: TVGShowDetailInteractorDelegate {
     func didFetchEpisodesSeason(for id: Int, with episodes: [TVGEpisodeEntity]) {
         let episode = SeasonEpisodes(id: id, episodes: episodes)
         seasonsEpisodes.append(episode)
-//        if seasonsEpisodes.count == seasons.count {
                     DispatchQueue.main.async {
                         self.delegate?.reloadTableView()
                     }
-//        }
     }
     
     func didFetchSeasonsList(with seasons: [TVGSeasonEntity]) {

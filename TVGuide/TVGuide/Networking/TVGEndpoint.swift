@@ -14,11 +14,12 @@ struct TVGEndpoint {
 }
 
 extension TVGEndpoint {
-    static var shows: Self {
-        return TVGEndpoint(endpoint: .getShows)
+    static func shows(with page:String) -> Self {
+        let queryItem = URLQueryItem(name: "page", value: page)
+        return TVGEndpoint(endpoint: .getShows, queryItems: [queryItem])
     }
     
-    static func shows(with text:String) -> Self {
+    static func searchShows(with text:String) -> Self {
         let queryItem = URLQueryItem(name: "q", value: text)
         return TVGEndpoint(endpoint: .searchShows, queryItems: [queryItem])
     }
