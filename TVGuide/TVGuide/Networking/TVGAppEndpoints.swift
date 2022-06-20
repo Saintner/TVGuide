@@ -12,6 +12,8 @@ enum TVGAppEndpoint {
     case searchShows
     case getSeasons(id: Int)
     case getEpisodes(id: Int)
+    case getPersons
+    case searchPersons
 }
 
 extension TVGAppEndpoint {
@@ -25,7 +27,11 @@ extension TVGAppEndpoint {
         case .getSeasons(let id):
             return "/" + TVGAPIEndpoints.shows.rawValue + "/\(id)/" + TVGAPIEndpoints.episodes.rawValue
         case .getEpisodes(let id):
-            return "/" + TVGAPIEndpoints.seasons.rawValue + "/\(id)/" + TVGAPIEndpoints.episodes.rawValue 
+            return "/" + TVGAPIEndpoints.seasons.rawValue + "/\(id)/" + TVGAPIEndpoints.episodes.rawValue
+        case .getPersons:
+            return "/" + TVGAPIEndpoints.people.rawValue
+        case .searchPersons:
+            return "/" + TVGAPIEndpoints.search.rawValue + "/" + TVGAPIEndpoints.people.rawValue
         }
     }
     

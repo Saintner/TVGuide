@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  TVGPersonsListViewController.swift
 //  TVGuide
 //
-//  Created by Eris Ramirez on 17/06/22.
+//  Created by User on 20/06/22.
 //
 
 import UIKit
 import SDWebImage
 
-class TVGShowsListViewController: UIViewController, TVGView {
+class TVGPersonsListViewController: UIViewController, TVGView {
     
     var presenter: TVGPresenter?
     
@@ -24,14 +24,16 @@ class TVGShowsListViewController: UIViewController, TVGView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let presenter = presenter as! TVGShowsListPresenter
+        let presenter = presenter as! TVGPersonsListPresenter
         presenter.viewDidLoad()
-        self.navigationItem.title = "Shows"
+        self.navigationItem.title = "Persons"
         self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {
+        setLeftIcon()
+//        setRightIcon()
         setTableView()
     }
     
@@ -45,17 +47,41 @@ class TVGShowsListViewController: UIViewController, TVGView {
         let bottomAnchor = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([topAnchor, leftAnchor, rightAnchor, bottomAnchor])
     }
+    
+//    func setRightIcon(){
+//        let favIcon = UIImage(systemName: "star")
+//        let favText = UIBarButtonItem(title: "Favorites", style: .plain, target: self, action: #selector(goToFavorites))
+//        let fav = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: #selector(goToFavorites))
+//        self.navigationItem.rightBarButtonItem = favText
+//    }
+//
+    func setLeftIcon(){
+        let favIcon = UIImage(systemName: "star")
+        let favText = UIBarButtonItem(title: "Shows", style: .plain, target: self, action: #selector(goToShows))
+//        let fav = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: #selector(goToFavorites))
+        self.navigationItem.leftBarButtonItem = favText
+    }
+    
+//    @objc func goToFavorites(){
+//        let presenter = presenter as! TVGShowsListPresenter
+//        presenter.goToFavorites()
+//    }
+//
+    @objc func goToShows(){
+        let presenter = presenter as! TVGPersonsListPresenter
+        presenter.goToShows()
+    }
 
 
 }
 
-extension TVGShowsListViewController: TVGShowsListPresenterDelegate {
+extension TVGPersonsListViewController: TVGPersonsListPresenterDelegate {
     func reloadTableView() {
         self.tableView.reloadData()
     }
 }
 
-extension TVGShowsListViewController: UITableViewDelegate {
+extension TVGPersonsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         tableHeader.delegate = self
@@ -74,30 +100,30 @@ extension TVGShowsListViewController: UITableViewDelegate {
             let contentYoffset = scrollView.contentOffset.y
             let distanceFromBottom = scrollView.contentSize.height - contentYoffset
             if distanceFromBottom < height {
-               let presenter = presenter as! TVGShowsListPresenter
+               let presenter = presenter as! TVGPersonsListPresenter
                 presenter.loadNewPage()
             }
     }
 }
 
 
-extension TVGShowsListViewController: TVGShowsListHeaderViewTableViewDelegate{
+extension TVGPersonsListViewController: TVGShowsListHeaderViewTableViewDelegate{
     func didChangeTextfield(with text: String) {
-        guard let presenter = presenter as? TVGShowsListPresenter else { return }
-        presenter.filterPosts(with: text)
+        guard let presenter = presenter as? TVGPersonsListPresenter else { return }
+        presenter.filterPersons(with: text)
     }
 }
 
-extension TVGShowsListViewController: UITableViewDataSource {
+extension TVGPersonsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let presenter = presenter as? TVGShowsListPresenter else { return 0 }
+        guard let presenter = presenter as? TVGPersonsListPresenter else { return 0 }
         return presenter.getPostsCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TVGConstants.defaultCellReuseIdentifier, for: indexPath)
-        guard let presenter = presenter as? TVGShowsListPresenter else { return cell }
+        guard let presenter = presenter as? TVGPersonsListPresenter else { return cell }
         cell.textLabel!.text =  presenter.getPostTitle(at: indexPath.row)
         let row = indexPath.row
         cell.imageView?.sd_setImage(with: presenter.getImageURL(at: row), placeholderImage: UIImage.placeholder, options: .progressiveLoad, completed: nil)
@@ -105,8 +131,9 @@ extension TVGShowsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let presenter = presenter as? TVGShowsListPresenter else { return }
+        guard let presenter = presenter as? TVGPersonsListPresenter else { return }
         tableView.deselectRow(at: indexPath, animated: false)
         presenter.didSelect(index: indexPath.row)
     }
 }
+

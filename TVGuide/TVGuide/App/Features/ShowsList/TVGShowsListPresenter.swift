@@ -34,6 +34,15 @@ class TVGShowsListPresenter: TVGPresenter {
         router.routeToDetailPostViewController(with: post)
     }
     
+    func goToFavorites() {
+        
+    }
+    
+    func goToPersons() {
+        guard let router = router as? TVGShowsListRouter else { return }
+        router.routeToPersonsListViewController()
+    }
+    
     func getPostsCount() -> Int {
         return  filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows.count : filteredPosts.count
 //        return shows.count
