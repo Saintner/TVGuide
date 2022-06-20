@@ -19,7 +19,6 @@ class TVGShowsListViewController: UIViewController, TVGView {
         table.register(UITableViewCell.self, forCellReuseIdentifier: TVGConstants.defaultCellReuseIdentifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
-    
     }()
     
     override func viewDidLoad() {

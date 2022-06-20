@@ -38,9 +38,9 @@ class TVGShowsListRouter: TVGRouter {
         return router
     }
     
-    func routeToDetailPostViewController(with post: TVGShowEntity) {
-//        let router = IBKPostDetailRouter.start(with: post)
-//        let vc = router.entry
-//        entry?.navigationController?.pushViewController(vc!, animated: true)
+    func routeToDetailPostViewController(with show: TVGShowEntity) {
+        let router = TVGShowDetailRouter.start(with: show)
+        let vc = router.entry
+        entry?.navigationController?.pushViewController(vc!, animated: true)
     }
 }
