@@ -36,4 +36,10 @@ class TVGShowDetailRouter: TVGRouter {
         router.entry = view as? EntryPoint
         return router
     }
+    
+    func routeToEpisodeDetailViewController(with episode: TVGEpisodeEntity) {
+        let router = TVGEpisodeDetailRouter.start(with: episode)
+        let vc = router.entry
+        entry?.navigationController?.pushViewController(vc!, animated: true)
+    }
 }

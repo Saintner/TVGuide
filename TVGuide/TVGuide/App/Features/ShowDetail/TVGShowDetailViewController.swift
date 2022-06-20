@@ -227,9 +227,11 @@ extension TVGShowDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let presenter = presenter as? TVGShowsListPresenter else { return }
+        guard let presenter = presenter as? TVGShowDetailPresenter else { return }
         tableView.deselectRow(at: indexPath, animated: false)
-        presenter.didSelect(index: indexPath.row)
+        let section = indexPath.section
+        let row = indexPath.row
+        presenter.didSelectEpisode(for: section, at: row)
     }
 }
 

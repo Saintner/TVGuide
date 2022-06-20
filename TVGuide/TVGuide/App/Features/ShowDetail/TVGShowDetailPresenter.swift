@@ -71,7 +71,11 @@ class TVGShowDetailPresenter: TVGPresenter {
     func getDaysAndTimeAired() -> String {
         let days = getDaysAiredText()
         let time = show.schedule.time
-        return "Watch every \(days) at \(time)"
+        if time.count > 0 {
+            return "Watch every \(days) at \(time)"
+        }else {
+            return "Watch every \(days)"
+        }
     }
     
     func getGenres() -> String {
@@ -97,6 +101,14 @@ class TVGShowDetailPresenter: TVGPresenter {
         }
         return days
     }
+    
+    func didSelectEpisode(for season:Int, at row: Int){
+        let episode = seasonsEpisodes.first(where: { $0.id == seasons[season].id }).map({ return $0.episodes[row]})
+        if let episode = episode as? TVGEpisodeEntity {
+            let routing = router as! TVGShowDetailRouter
+            routing.routeToEpisodeDetailViewController(with: episode)
+        }
+    }
 }
 
 extension TVGShowDetailPresenter: TVGShowDetailInteractorDelegate {
@@ -104,11 +116,11 @@ extension TVGShowDetailPresenter: TVGShowDetailInteractorDelegate {
     func didFetchEpisodesSeason(for id: Int, with episodes: [TVGEpisodeEntity]) {
         let episode = SeasonEpisodes(id: id, episodes: episodes)
         seasonsEpisodes.append(episode)
-        if seasonsEpisodes.count == seasons.count {
+//        if seasonsEpisodes.count == seasons.count {
                     DispatchQueue.main.async {
                         self.delegate?.reloadTableView()
                     }
-        }
+//        }
     }
     
     func didFetchSeasonsList(with seasons: [TVGSeasonEntity]) {

@@ -28,7 +28,7 @@ class TVGShowsListPresenter: TVGPresenter {
 
     func didSelect(index: Int) {
         guard let router = router as? TVGShowsListRouter else { return }
-        let post = shows[index]
+        let post = filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows[index] : filteredPosts[index]
         router.routeToDetailPostViewController(with: post)
     }
     

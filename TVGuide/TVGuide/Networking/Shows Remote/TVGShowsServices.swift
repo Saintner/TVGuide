@@ -48,7 +48,6 @@ final class TVGShowsServices: TVGShowsServicesProtocol {
     
     func fetchSeasonEpisodes(with id: Int) -> AnyPublisher<[TVGEpisodeEntity],TVGError>{
         let endpoint = TVGEndpoint.episodes(with: id)
-        print(endpoint.url)
         return networkManager.fetchArray(type: [TVGEpisodeEntity].self, url: endpoint.url)
     }
 }
