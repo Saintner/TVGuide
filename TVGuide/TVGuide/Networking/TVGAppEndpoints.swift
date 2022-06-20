@@ -9,7 +9,7 @@ import Foundation
 
 enum TVGAppEndpoint {
     case getShows
-    
+    case searchShows
 }
 
 extension TVGAppEndpoint {
@@ -18,6 +18,8 @@ extension TVGAppEndpoint {
         switch self {
         case .getShows:
             return "/" + TGVAPIEndpoints.shows.rawValue
+        case .searchShows:
+            return "/" + TGVAPIEndpoints.search.rawValue + "/" + TGVAPIEndpoints.shows.rawValue
         }
     }
     

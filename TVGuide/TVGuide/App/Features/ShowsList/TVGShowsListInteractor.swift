@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 protocol TVGShowsListInteractorDelegate {
-    func didFetchPostList(with shows: [TVGShowEntity])
+    func didFetchShowsList(with shows: [TVGShowEntity])
+    func didFetchSearchedShowsList(with searchedShows: [TVGShowEntity])
 }
 
 class TVGShowsListInteractor: TVGInteractor {
@@ -32,8 +33,25 @@ class TVGShowsListInteractor: TVGInteractor {
                 break
             }
         } receiveValue: { [weak self] shows in
-            self?.delegate?.didFetchPostList(with: shows)
+            self?.delegate?.didFetchShowsList(with: shows)
         }.store(in: &cancellables)
     }
+    
+    func fetchSearchShowsList(with text:String){
+        showsServices.fetchSearchedShows(with: text).sink { completion in
+            switch completion {
+            case .failure(let error):
+                print(error)
+            case .finished:
+                break
+            }
+        } receiveValue: { [weak self] shows in
+            let showsMapper = shows.map { searchedShow -> TVGShowEntity in
+                return searchedShow.show
+            }
+            self?.delegate?.didFetchSearchedShowsList(with: showsMapper)
+        }.store(in: &cancellables)
+    }
+    
     
 }

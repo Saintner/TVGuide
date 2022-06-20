@@ -27,8 +27,8 @@ struct TVGShowEntity: TVGEntity {
     var webChannel: Network?
     var dvdCountry: Network.TVGCountry?
     var externals: Externals
-    var image: Image
-    var summary: String
+    var image: Image?
+    var summary: String?
     var updated: Int
     var _links: Links
     struct Schedule: TVGEntity {
@@ -53,7 +53,7 @@ struct TVGShowEntity: TVGEntity {
     }
     
     struct Externals: TVGEntity {
-        var tvrage: Int
+        var tvrage: Int?
         var thetvdb: Int?
         var imdb: String?
     }
@@ -73,4 +73,9 @@ struct TVGShowEntity: TVGEntity {
             var href: String
         }
     }
+}
+
+struct TVGSearchedShowEntity: TVGEntity {
+    var score: Double?
+    var show: TVGShowEntity
 }

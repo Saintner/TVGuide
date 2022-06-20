@@ -44,9 +44,17 @@ class TVGShowsListPresenter: TVGPresenter {
     
     func filterPosts(with text: String) {
         isSearchingFilteredPosts = text.trimmingCharacters(in: .whitespaces).count != 0
-        let newPosts = shows.filter({ $0.name.contains(text)})
-        filteredPosts = newPosts
-        self.delegate?.reloadTableView()
+        if isSearchingFilteredPosts {
+            guard let interactor = interactor as? TVGShowsListInteractor else { return }
+            DispatchQueue.global(qos: .background).async {
+                interactor.fetchSearchShowsList(with: text)
+            }
+        }else {
+            if filteredPosts.count > 0 {
+                filteredPosts = [TVGShowEntity]()
+            }
+            self.delegate?.reloadTableView()
+        }
     }
     
     func viewDidLoad(){
@@ -61,8 +69,8 @@ class TVGShowsListPresenter: TVGPresenter {
     }
     
     func getImageURL(at row: Int) -> URL? {
-        let urlString = shows[row].image.medium
-        let url = URL(string: urlString)
+        let urlString = filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows[row].image?.medium : filteredPosts[row].image?.medium
+        let url = URL(string: urlString ?? "")
         return url
     }
     
@@ -73,8 +81,15 @@ class TVGShowsListPresenter: TVGPresenter {
 
 extension TVGShowsListPresenter: TVGShowsListInteractorDelegate {
     
-    func didFetchPostList(with shows: [TVGShowEntity]) {
+    func didFetchShowsList(with shows: [TVGShowEntity]) {
         self.shows = shows
+        DispatchQueue.main.async {
+            self.delegate?.reloadTableView()
+        }
+    }
+    
+    func didFetchSearchedShowsList(with searchedShows: [TVGShowEntity]) {
+        self.filteredPosts = searchedShows
         DispatchQueue.main.async {
             self.delegate?.reloadTableView()
         }
