@@ -111,4 +111,8 @@ extension TVGShowsListPresenter: TVGShowsListInteractorDelegate {
             self.delegate?.reloadTableView()
         }
     }
+    
+    func didFailedFetch() {
+        viewDidLoad()
+    }
 }

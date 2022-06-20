@@ -11,6 +11,7 @@ import Combine
 protocol TVGShowsListInteractorDelegate {
     func didFetchShowsList(with shows: [TVGShowEntity])
     func didFetchSearchedShowsList(with searchedShows: [TVGShowEntity])
+    func didFailedFetch()
 }
 
 class TVGShowsListInteractor: TVGInteractor {
@@ -41,7 +42,7 @@ class TVGShowsListInteractor: TVGInteractor {
         showsServices.fetchSearchedShows(with: text).sink { completion in
             switch completion {
             case .failure(let error):
-                print(error)
+                self.delegate?.didFailedFetch()
             case .finished:
                 break
             }
