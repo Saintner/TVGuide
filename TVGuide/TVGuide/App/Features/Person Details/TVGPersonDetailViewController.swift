@@ -24,6 +24,14 @@ class TVGPersonDetailViewController: UIViewController, TVGView {
         return label
     }()
     
+    private var emptyShowsLabel: UILabel = {
+        let label = UILabel()
+        label.text = TVGConstants.emptyPersonShows
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     var tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: TVGConstants.defaultCellReuseIdentifier)
@@ -36,6 +44,9 @@ class TVGPersonDetailViewController: UIViewController, TVGView {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let presenter = presenter as! TVGPersonDetailPresenter
         self.navigationItem.title = presenter.getPersonTitle()
         presenter.viewDidLoad()
@@ -82,54 +93,25 @@ class TVGPersonDetailViewController: UIViewController, TVGView {
         NSLayoutConstraint.activate([topAnchor, leftAnchor, rightAnchor, bottomAnchor])
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func setupEmptyShowsLabel() {
+        view.addSubview(emptyShowsLabel)
+        let topAnchor = NSLayoutConstraint(item: emptyShowsLabel, attribute: .top, relatedBy: .equal, toItem: nameLabel, attribute: .bottom, multiplier: 1, constant: 25)
+        let leftAnchor = NSLayoutConstraint(item: emptyShowsLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 16)
+        let right = NSLayoutConstraint(item: emptyShowsLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -16)
+        NSLayoutConstraint.activate([topAnchor, leftAnchor, right])
     }
-    */
 
 }
 
-extension TVGPersonDetailViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-}
-
-extension TVGPersonDetailViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let presenter = presenter as! TVGPersonDetailPresenter
-        return presenter.getShowsCount()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TVGConstants.defaultCellReuseIdentifier, for: indexPath)
-        let presenter = presenter as! TVGPersonDetailPresenter
-        let row = indexPath.row
-        cell.textLabel!.text = presenter.getShowName(at: row)
-        return cell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let presenter = presenter as? TVGPersonDetailPresenter else { return }
-        tableView.deselectRow(at: indexPath, animated: false)
-        let row = indexPath.row
-        presenter.didSelectShow(at: row)
-    }
-    
-    
-}
 
 extension TVGPersonDetailViewController: TVGPersonDetailPresenterDelegate {
     func reloadTableView() {
-        self.tableView.reloadData()
+        let presenter = presenter as! TVGPersonDetailPresenter
+        if presenter.getShowsCount() == 0 {
+            setupEmptyShowsLabel()
+        }else {
+            self.tableView.reloadData()
+        }
     }
 }

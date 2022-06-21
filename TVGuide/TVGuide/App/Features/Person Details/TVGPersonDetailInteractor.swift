@@ -10,23 +10,21 @@ import Combine
 
 protocol TVGPersonDetailInteractorDelegate {
     func didFetchPersonDetails(with details: [TVGPersonShowsEntity])
-//    func didFetchSearchedPersonsList(with searchedShows: [TVGPersonEntity])
-//    func didFailedFetch()
 }
 
 class TVGPersonDetailInteractor: TVGInteractor {
     var presenter: TVGPresenter?
-    var showsServices: TVGPersonsServices
+    var personServices: TVGPersonsServices
     
     var delegate: TVGPersonDetailInteractorDelegate?
     private var cancellables = Set<AnyCancellable>()
     
     init(networkManager: TVGNetworkManagerProtocol) {
-        self.showsServices = TVGPersonsServices(networkManager: networkManager)
+        self.personServices = TVGPersonsServices(networkManager: networkManager)
     }
     
     func getPersonDetails(with id: Int) {
-        showsServices.fetchPersonDetails(with: id).sink { completion in
+        personServices.fetchPersonDetails(with: id).sink { completion in
             switch completion {
             case .failure(let error):
                 print(error)

@@ -15,4 +15,9 @@ struct TVGConstants {
     }
     static var defaultCellReuseIdentifier = "cell"
     static var textFieldSearchPlaceholder = "Search"
+    static var tabBarShowsTitle = "Shows"
+    static var tabBarPersonsTitle = "Persons"
+    static var tvIcon =  "play.tv"
+    static var personIcon =  "person.2"
+    static var emptyPersonShows = "There is not shows data available"
 }

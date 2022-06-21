@@ -26,7 +26,7 @@ class TVGShowsListViewController: UIViewController, TVGView {
         
         let presenter = presenter as! TVGShowsListPresenter
         presenter.viewDidLoad()
-        self.navigationItem.title = "Shows"
+        self.navigationItem.title = TVGConstants.tabBarShowsTitle
         self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
@@ -55,58 +55,10 @@ extension TVGShowsListViewController: TVGShowsListPresenterDelegate {
     }
 }
 
-extension TVGShowsListViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        tableHeader.delegate = self
-        return tableHeader
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let height = scrollView.frame.size.height
-            let contentYoffset = scrollView.contentOffset.y
-            let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-            if distanceFromBottom < height {
-               let presenter = presenter as! TVGShowsListPresenter
-                presenter.loadNewPage()
-            }
-    }
-}
-
 
 extension TVGShowsListViewController: TVGShowsListHeaderViewTableViewDelegate{
     func didChangeTextfield(with text: String) {
         guard let presenter = presenter as? TVGShowsListPresenter else { return }
         presenter.filterPosts(with: text)
-    }
-}
-
-extension TVGShowsListViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let presenter = presenter as? TVGShowsListPresenter else { return 0 }
-        return presenter.getPostsCount()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TVGConstants.defaultCellReuseIdentifier, for: indexPath)
-        guard let presenter = presenter as? TVGShowsListPresenter else { return cell }
-        cell.textLabel!.text =  presenter.getPostTitle(at: indexPath.row)
-        let row = indexPath.row
-        cell.imageView?.sd_setImage(with: presenter.getImageURL(at: row), placeholderImage: UIImage.placeholder, options: .progressiveLoad, completed: nil)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let presenter = presenter as? TVGShowsListPresenter else { return }
-        tableView.deselectRow(at: indexPath, animated: false)
-        presenter.didSelect(index: indexPath.row)
     }
 }

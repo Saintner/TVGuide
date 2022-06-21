@@ -23,14 +23,14 @@ class TVGShowsListPresenter: TVGPresenter {
     var delegate: TVGShowsListPresenterDelegate?
     
     private var shows = [TVGShowEntity]()
-    private var filteredPosts = [TVGShowEntity]()
+    private var filteredShows = [TVGShowEntity]()
     private var isSearchingFilteredPosts: Bool = false
     private var isLoadingNewPage: Bool = false
     private var currentPage: Int = 1
 
     func didSelect(index: Int) {
         guard let router = router as? TVGShowsListRouter else { return }
-        let post = filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows[index] : filteredPosts[index]
+        let post = filteredShows.count == 0 && !isSearchingFilteredPosts ? shows[index] : filteredShows[index]
         router.routeToDetailPostViewController(with: post)
     }
     
@@ -44,13 +44,11 @@ class TVGShowsListPresenter: TVGPresenter {
     }
     
     func getPostsCount() -> Int {
-        return  filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows.count : filteredPosts.count
-//        return shows.count
+        return  filteredShows.count == 0 && !isSearchingFilteredPosts ? shows.count : filteredShows.count
     }
     
     func getPostTitle(at index: Int) -> String {
-//        return shows[index].name
-        return filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows[index].name : filteredPosts[index].name
+        return filteredShows.count == 0 && !isSearchingFilteredPosts ? shows[index].name : filteredShows[index].name
     }
     
     func filterPosts(with text: String) {
@@ -61,8 +59,8 @@ class TVGShowsListPresenter: TVGPresenter {
                 interactor.fetchSearchShowsList(with: text)
             }
         }else {
-            if filteredPosts.count > 0 {
-                filteredPosts = [TVGShowEntity]()
+            if filteredShows.count > 0 {
+                filteredShows = [TVGShowEntity]()
             }
             self.delegate?.reloadTableView()
         }
@@ -80,13 +78,13 @@ class TVGShowsListPresenter: TVGPresenter {
     }
     
     func getImageURL(at row: Int) -> URL? {
-        let urlString = filteredPosts.count == 0 && !isSearchingFilteredPosts ? shows[row].image?.medium : filteredPosts[row].image?.medium
+        let urlString = filteredShows.count == 0 && !isSearchingFilteredPosts ? shows[row].image?.medium : filteredShows[row].image?.medium
         let url = URL(string: urlString ?? "")
         return url
     }
     
     func showLoadingView() -> Bool{
-        return shows.count == 0 && filteredPosts.count == 0 && !isSearchingFilteredPosts
+        return shows.count == 0 && filteredShows.count == 0 && !isSearchingFilteredPosts
     }
     
     func loadNewPage() {
@@ -115,7 +113,7 @@ extension TVGShowsListPresenter: TVGShowsListInteractorDelegate {
     }
     
     func didFetchSearchedShowsList(with searchedShows: [TVGShowEntity]) {
-        self.filteredPosts = searchedShows
+        self.filteredShows = searchedShows
         DispatchQueue.main.async {
             self.delegate?.reloadTableView()
         }

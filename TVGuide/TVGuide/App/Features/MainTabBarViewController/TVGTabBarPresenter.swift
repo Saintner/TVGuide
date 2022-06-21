@@ -17,11 +17,11 @@ class TVGTabBarPresenter: TVGPresenter {
     
     func getShowsListViewController() -> UIViewController {
         let router = router as! TVGTabBarRouter
-        return router.routeToShowsListViewController()
+        return router.getShowsListViewController()
     }
     
     func getPersonsListViewController() -> UIViewController {
         let router = router as! TVGTabBarRouter
-        return router.routeToPersonsListViewController()
+        return router.getPersonsListViewController()
     }
 }

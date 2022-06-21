@@ -41,7 +41,7 @@ class TVGShowsListInteractor: TVGInteractor {
     func fetchSearchShowsList(with text:String){
         showsServices.fetchSearchedShows(with: text).sink { completion in
             switch completion {
-            case .failure(let error):
+            case .failure(_):
                 self.delegate?.didFailedFetch()
             case .finished:
                 break

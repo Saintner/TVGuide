@@ -15,7 +15,6 @@ class TVGTabBarRouter: TVGRouter {
     var data: TVGEntity?
     
     static func start(with data: TVGEntity? = nil) -> TVGRouter {
-        let remoteModelCollection = TVGNetworkManager()
         let router = TVGTabBarRouter()
         
         var view: TVGView = TVGTabBarViewController()
@@ -25,25 +24,23 @@ class TVGTabBarRouter: TVGRouter {
         
         presenter.router = router
         presenter.view = view
-//        presenter.delegate = view as? TVGPersonsListPresenterDelegate
         presenter.interactor = interactor
         
         view.presenter = presenter
         
         interactor.presenter = presenter
-//        interactor.delegate = presenter
         
         router.entry = view as? EntryPoint
         return router
     }
     
-    func routeToShowsListViewController() -> UIViewController {
+    func getShowsListViewController() -> UIViewController {
         let router = TVGShowsListRouter.start()
         let vc = router.entry
         return vc!
     }
     
-    func routeToPersonsListViewController() -> UIViewController {
+    func getPersonsListViewController() -> UIViewController {
         let router = TVGPersonsListRouter.start()
         let vc = router.entry
         return vc!

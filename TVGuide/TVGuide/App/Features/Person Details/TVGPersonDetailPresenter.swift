@@ -27,8 +27,10 @@ class TVGPersonDetailPresenter: TVGPresenter {
     }
     
     func viewDidLoad(){
-        let interactor = interactor as! TVGPersonDetailInteractor
-        interactor.getPersonDetails(with: person.id)
+        DispatchQueue.global(qos: .background).async {
+            let interactor = self.interactor as! TVGPersonDetailInteractor
+            interactor.getPersonDetails(with: self.person.id)
+        }
     }
     
     func getImageURL() -> URL? {

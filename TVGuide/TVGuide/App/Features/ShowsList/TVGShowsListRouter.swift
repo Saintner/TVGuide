@@ -49,8 +49,5 @@ class TVGShowsListRouter: TVGRouter {
         let vc = router.entry
         entry?.modalPresentationStyle = .overFullScreen
         entry?.present(vc!, animated: true)
-//        entry?.navigationController?.pushViewController(vc!, animated: true)
-//        entry?.navigationController?.setViewControllers([vc!], animated: true)
-        print(entry?.navigationController?.viewControllers)
     }
 }

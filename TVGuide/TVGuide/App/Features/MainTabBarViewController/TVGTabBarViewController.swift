@@ -21,36 +21,19 @@ class TVGTabBarViewController: UITabBarController, TVGView {
     override func viewWillAppear(_ animated: Bool) {
         if self.viewControllers?.count == nil {
             let presenter = presenter as! TVGTabBarPresenter
-            let tabOne = presenter.getShowsListViewController()
-                   let tabOneBarItem = UITabBarItem(title: "Shows", image: nil, selectedImage: nil)
             
-            tabOne.view.backgroundColor = .blue
-                   tabOne.tabBarItem = tabOneBarItem
-                   
+            let firstTab = presenter.getShowsListViewController()
+            let tabBarShowsItem = UITabBarItem(title: TVGConstants.tabBarShowsTitle, image: UIImage(systemName: TVGConstants.tvIcon), selectedImage: nil)
+            firstTab.tabBarItem = tabBarShowsItem
             
-                   // Create Tab two
-            let tabTwo = presenter.getPersonsListViewController()
-            tabTwo.view.backgroundColor = .green
-                   let tabTwoBarItem2 = UITabBarItem(title: "Persons", image: nil, selectedImage: nil)
-                   
-                   tabTwo.tabBarItem = tabTwoBarItem2
-                   
-                   
-                   self.viewControllers = [tabOne, tabTwo]
-            self.navigationItem.title = tabOneBarItem.title
+            let secondTab = presenter.getPersonsListViewController()
+            let tabBarPersonsItem = UITabBarItem(title: TVGConstants.tabBarPersonsTitle, image: UIImage(systemName: TVGConstants.personIcon), selectedImage: nil)
+            secondTab.tabBarItem = tabBarPersonsItem
+            
+            self.viewControllers = [firstTab, secondTab]
+            self.navigationItem.title = tabBarShowsItem.title
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
