@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Combine
 
-// - IBKNetworkManagerProtocol defines the base protocol to manage remote API calls
+// - TVGNetworkManagerProtocol defines the base protocol to manage remote API calls
 
 protocol TVGNetworkManagerProtocol: AnyObject{
     // - main fetch from remote function
@@ -19,7 +19,7 @@ protocol TVGNetworkManagerProtocol: AnyObject{
                                                                                        url: URL) -> AnyPublisher<[T], TVGError> where T: Decodable
 }
 
-// - IBKNetworkManager a final class to give a fetch an implementation
+// - TVGNetworkManager a final class to give a fetch an implementation
 final class TVGNetworkManager: TVGNetworkManagerProtocol {
     func fetchArray<T>(type: [T].Type, url: URL) -> AnyPublisher<[T], TVGError> where T : Decodable {
         return URLSession.shared.dataTaskPublisher(for: url)

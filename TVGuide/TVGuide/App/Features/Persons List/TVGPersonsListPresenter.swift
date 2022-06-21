@@ -30,15 +30,15 @@ class TVGPersonsListPresenter: TVGPresenter {
 
     func didSelect(index: Int) {
         guard let router = router as? TVGPersonsListRouter else { return }
-        let post = filteredPersons.count == 0 && !isSearchingFilteredPersons ? persons[index] : filteredPersons[index]
-        router.routeToPersonsDetailViewController(with: post)
+        let person = filteredPersons.count == 0 && !isSearchingFilteredPersons ? persons[index] : filteredPersons[index]
+        router.routeToPersonsDetailViewController(with: person)
     }
     
-    func getPostsCount() -> Int {
+    func getPersonsCount() -> Int {
         return  filteredPersons.count == 0 && !isSearchingFilteredPersons ? persons.count : filteredPersons.count
     }
     
-    func getPostTitle(at index: Int) -> String {
+    func getPersonTitle(at index: Int) -> String {
         return filteredPersons.count == 0 && !isSearchingFilteredPersons ? persons[index].name : filteredPersons[index].name
     }
     

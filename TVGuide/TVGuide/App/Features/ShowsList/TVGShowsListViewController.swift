@@ -59,6 +59,6 @@ extension TVGShowsListViewController: TVGShowsListPresenterDelegate {
 extension TVGShowsListViewController: TVGShowsListHeaderViewTableViewDelegate{
     func didChangeTextfield(with text: String) {
         guard let presenter = presenter as? TVGShowsListPresenter else { return }
-        presenter.filterPosts(with: text)
+        presenter.filterShows(with: text)
     }
 }

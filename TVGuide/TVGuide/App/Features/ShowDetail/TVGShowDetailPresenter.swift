@@ -112,6 +112,10 @@ class TVGShowDetailPresenter: TVGPresenter {
 }
 
 extension TVGShowDetailPresenter: TVGShowDetailInteractorDelegate {
+    func didFailedFetching() {
+        viewDidLoad()
+    }
+    
     
     func didFetchSeasonsList(with seasons: [TVGEpisodeEntity]) {
             for season in seasons {

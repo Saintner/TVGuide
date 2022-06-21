@@ -82,6 +82,9 @@ class TVGShowDetailViewController: UIViewController, TVGView {
         presenter.viewDidLoad()
         
         self.navigationItem.title = presenter.getShowTitle()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setScrollView()
     }
     
@@ -181,10 +184,6 @@ class TVGShowDetailViewController: UIViewController, TVGView {
         let rightAnchor = NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1, constant: 0)
         let bottomAnchor = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([topAnchor, leftAnchor, rightAnchor, bottomAnchor])
-    }
-    
-    override func viewDidLayoutSubviews() {
-        print(tableView.contentSize)
     }
 }
 

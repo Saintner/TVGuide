@@ -58,6 +58,10 @@ class TVGPersonDetailPresenter: TVGPresenter {
 }
 
 extension TVGPersonDetailPresenter: TVGPersonDetailInteractorDelegate {
+    func didFailedFetchindDetails() {
+        viewDidLoad()
+    }
+    
     func didFetchPersonDetails(with details: [TVGPersonShowsEntity]) {
         let shows = details.map { detail -> TVGShowEntity in
             return detail._embedded.show

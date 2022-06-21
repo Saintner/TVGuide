@@ -10,6 +10,7 @@ import Combine
 
 protocol TVGPersonDetailInteractorDelegate {
     func didFetchPersonDetails(with details: [TVGPersonShowsEntity])
+    func didFailedFetchindDetails()
 }
 
 class TVGPersonDetailInteractor: TVGInteractor {
@@ -26,8 +27,8 @@ class TVGPersonDetailInteractor: TVGInteractor {
     func getPersonDetails(with id: Int) {
         personServices.fetchPersonDetails(with: id).sink { completion in
             switch completion {
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self.delegate?.didFailedFetchindDetails()
             case .finished:
                 break
             }

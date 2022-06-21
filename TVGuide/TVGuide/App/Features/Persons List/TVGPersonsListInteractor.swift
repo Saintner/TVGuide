@@ -28,8 +28,8 @@ class TVGPersonsListInteractor: TVGInteractor {
     func fetchPersonsList(with page:Int = 1) {
         showsServices.fetchPersons(with: page).sink { completion in
             switch completion {
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self.delegate?.didFailedFetch()
             case .finished:
                 break
             }
@@ -41,8 +41,7 @@ class TVGPersonsListInteractor: TVGInteractor {
     func fetchSearchPersonsList(with text:String){
         showsServices.fetchSearchedPersons(with: text).sink { completion in
             switch completion {
-            case .failure(let error):
-                print(error)
+            case .failure(_):
                 self.delegate?.didFailedFetch()
             case .finished:
                 break

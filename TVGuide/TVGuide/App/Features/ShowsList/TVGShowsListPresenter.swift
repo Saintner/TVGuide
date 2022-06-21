@@ -24,14 +24,14 @@ class TVGShowsListPresenter: TVGPresenter {
     
     private var shows = [TVGShowEntity]()
     private var filteredShows = [TVGShowEntity]()
-    private var isSearchingFilteredPosts: Bool = false
+    private var isSearchingFilteredShows: Bool = false
     private var isLoadingNewPage: Bool = false
     private var currentPage: Int = 1
 
     func didSelect(index: Int) {
         guard let router = router as? TVGShowsListRouter else { return }
-        let post = filteredShows.count == 0 && !isSearchingFilteredPosts ? shows[index] : filteredShows[index]
-        router.routeToDetailPostViewController(with: post)
+        let show = filteredShows.count == 0 && !isSearchingFilteredShows ? shows[index] : filteredShows[index]
+        router.routeToDetailShowViewController(with: show)
     }
     
     func goToFavorites() {
@@ -43,17 +43,17 @@ class TVGShowsListPresenter: TVGPresenter {
         router.routeToPersonsListViewController()
     }
     
-    func getPostsCount() -> Int {
-        return  filteredShows.count == 0 && !isSearchingFilteredPosts ? shows.count : filteredShows.count
+    func getShowsCount() -> Int {
+        return  filteredShows.count == 0 && !isSearchingFilteredShows ? shows.count : filteredShows.count
     }
     
-    func getPostTitle(at index: Int) -> String {
-        return filteredShows.count == 0 && !isSearchingFilteredPosts ? shows[index].name : filteredShows[index].name
+    func getShowTitle(at index: Int) -> String {
+        return filteredShows.count == 0 && !isSearchingFilteredShows ? shows[index].name : filteredShows[index].name
     }
     
-    func filterPosts(with text: String) {
-        isSearchingFilteredPosts = text.trimmingCharacters(in: .whitespaces).count != 0
-        if isSearchingFilteredPosts {
+    func filterShows(with text: String) {
+        isSearchingFilteredShows = text.trimmingCharacters(in: .whitespaces).count != 0
+        if isSearchingFilteredShows {
             guard let interactor = interactor as? TVGShowsListInteractor else { return }
             DispatchQueue.global(qos: .background).async {
                 interactor.fetchSearchShowsList(with: text)
@@ -78,13 +78,13 @@ class TVGShowsListPresenter: TVGPresenter {
     }
     
     func getImageURL(at row: Int) -> URL? {
-        let urlString = filteredShows.count == 0 && !isSearchingFilteredPosts ? shows[row].image?.medium : filteredShows[row].image?.medium
+        let urlString = filteredShows.count == 0 && !isSearchingFilteredShows ? shows[row].image?.medium : filteredShows[row].image?.medium
         let url = URL(string: urlString ?? "")
         return url
     }
     
     func showLoadingView() -> Bool{
-        return shows.count == 0 && filteredShows.count == 0 && !isSearchingFilteredPosts
+        return shows.count == 0 && filteredShows.count == 0 && !isSearchingFilteredShows
     }
     
     func loadNewPage() {

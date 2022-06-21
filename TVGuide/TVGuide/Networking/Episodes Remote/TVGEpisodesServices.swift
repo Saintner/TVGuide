@@ -8,15 +8,15 @@
 import Foundation
 import Combine
 
-// - TVGEpisodesServicesProtocol takes networkManager as a IBKNetworkManagerProtocol property and
-// - fetchPosts method as AnyPublisher<IBKPosts,IBKError>
+// - TVGEpisodesServicesProtocol takes networkManager as a TVGNetworkManagerProtocol property and
+// - fetchEpisode method as AnyPublisher<TVGEpisodeEntity, TVGError>
 protocol TVGEpisodesServicesProtocol {
     var networkManager: TVGNetworkManagerProtocol { get set }
     
     func fetchEpisode(with id:Int) -> AnyPublisher<TVGEpisodeEntity, TVGError>
 }
 
-// - TVGShowsServices final class to handle Post entity Remote Services
+// - TVGShowsServices final class to handle Episodes entity Remote Services
 final class TVGEpisodesServices: TVGEpisodesServicesProtocol {
     
     var networkManager: TVGNetworkManagerProtocol

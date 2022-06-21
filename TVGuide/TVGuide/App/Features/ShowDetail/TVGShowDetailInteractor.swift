@@ -10,6 +10,7 @@ import Combine
 
 protocol TVGShowDetailInteractorDelegate {
     func didFetchSeasonsList(with seasons: [TVGEpisodeEntity])
+    func didFailedFetching()
 }
 
 class TVGShowDetailInteractor: TVGInteractor {
@@ -26,8 +27,8 @@ class TVGShowDetailInteractor: TVGInteractor {
     func fetchSeasons(with id: Int){
         showServices.fetchSeasons(with: id).sink { completion in
                 switch completion {
-                case .failure(let error):
-                    print(error)
+                case .failure(_):
+                    self.delegate?.didFailedFetching()
                 case .finished:
                     break
                 }

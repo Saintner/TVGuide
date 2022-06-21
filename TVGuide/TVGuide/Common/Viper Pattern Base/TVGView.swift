@@ -11,7 +11,3 @@ import UIKit
 protocol TVGView {
     var presenter: TVGPresenter? { get  set}
 }
-
-//protocol IBKTableView: IBKView, UITableViewDelegate, UITableViewDataSource {
-//    
-//}

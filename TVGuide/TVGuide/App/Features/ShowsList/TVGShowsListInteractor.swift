@@ -28,8 +28,8 @@ class TVGShowsListInteractor: TVGInteractor {
     func fetchShowsList(with page:Int = 1) {
         showsServices.fetchShows(with: page).sink { completion in
             switch completion {
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self.delegate?.didFailedFetch()
             case .finished:
                 break
             }

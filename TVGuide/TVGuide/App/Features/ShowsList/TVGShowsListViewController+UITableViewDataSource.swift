@@ -11,13 +11,13 @@ extension TVGShowsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let presenter = presenter as? TVGShowsListPresenter else { return 0 }
-        return presenter.getPostsCount()
+        return presenter.getShowsCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TVGConstants.defaultCellReuseIdentifier, for: indexPath)
         guard let presenter = presenter as? TVGShowsListPresenter else { return cell }
-        cell.textLabel!.text =  presenter.getPostTitle(at: indexPath.row)
+        cell.textLabel!.text =  presenter.getShowTitle(at: indexPath.row)
         let row = indexPath.row
         cell.imageView?.sd_setImage(with: presenter.getImageURL(at: row), placeholderImage: UIImage.placeholder, options: .progressiveLoad, completed: nil)
         return cell

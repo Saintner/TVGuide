@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-// entryPoint type alias for IBKView Protocol and UIVIewController
+// entryPoint type alias for TVGView Protocol and UIVIewController
 typealias EntryPoint = TVGView & UIViewController
 
-// -IBKRouter Base router protocol
+// -TVGRouter Base router protocol
 protocol TVGRouter {
     var entry: EntryPoint? { get }
     var data: TVGEntity? { get }

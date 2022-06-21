@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-// - TVGPersonsServicesProtocol takes networkManager as a IBKNetworkManagerProtocol property and
-// - fetchPosts method as AnyPublisher<IBKPosts,IBKError>
+// - TVGPersonsServicesProtocol takes networkManager as a TVGNetworkManagerProtocol property and
+// - fetchPersons method as AnyPublisher<TVGShowEntity,TVGError>
 protocol TVGPersonsServicesProtocol {
     var networkManager: TVGNetworkManagerProtocol { get set }
     
@@ -20,7 +20,7 @@ protocol TVGPersonsServicesProtocol {
     func fetchPersonDetails(with id: Int) ->  AnyPublisher<[TVGPersonShowsEntity],TVGError> 
 }
 
-// - TVGPersonsServices final class to handle Post entity Remote Services
+// - TVGPersonsServices final class to handle Person entity Remote Services
 final class TVGPersonsServices: TVGPersonsServicesProtocol {
     
     var networkManager: TVGNetworkManagerProtocol
