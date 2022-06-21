@@ -59,6 +59,11 @@
 		CE645D912861264800039BDC /* TVGTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D902861264800039BDC /* TVGTabBarPresenter.swift */; };
 		CE645D932861265B00039BDC /* TVGTabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D922861265B00039BDC /* TVGTabBarInteractor.swift */; };
 		CE645D952861266B00039BDC /* TVGTabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D942861266B00039BDC /* TVGTabBarRouter.swift */; };
+		CE645D9828612E5D00039BDC /* TVGPersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D9728612E5D00039BDC /* TVGPersonDetailViewController.swift */; };
+		CE645D9A28612E7700039BDC /* TVGPersonDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D9928612E7700039BDC /* TVGPersonDetailPresenter.swift */; };
+		CE645D9C28612E8700039BDC /* TVGPersonDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D9B28612E8700039BDC /* TVGPersonDetailInteractor.swift */; };
+		CE645D9E28612E9300039BDC /* TVGPersonDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D9D28612E9300039BDC /* TVGPersonDetailRouter.swift */; };
+		CE645DA02861449100039BDC /* TVGPersonShowsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE645D9F2861449100039BDC /* TVGPersonShowsEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +139,11 @@
 		CE645D902861264800039BDC /* TVGTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGTabBarPresenter.swift; sourceTree = "<group>"; };
 		CE645D922861265B00039BDC /* TVGTabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGTabBarInteractor.swift; sourceTree = "<group>"; };
 		CE645D942861266B00039BDC /* TVGTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGTabBarRouter.swift; sourceTree = "<group>"; };
+		CE645D9728612E5D00039BDC /* TVGPersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGPersonDetailViewController.swift; sourceTree = "<group>"; };
+		CE645D9928612E7700039BDC /* TVGPersonDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGPersonDetailPresenter.swift; sourceTree = "<group>"; };
+		CE645D9B28612E8700039BDC /* TVGPersonDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGPersonDetailInteractor.swift; sourceTree = "<group>"; };
+		CE645D9D28612E9300039BDC /* TVGPersonDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGPersonDetailRouter.swift; sourceTree = "<group>"; };
+		CE645D9F2861449100039BDC /* TVGPersonShowsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGPersonShowsEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +268,7 @@
 		CE645D31285D9A2F00039BDC /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CE645D9628612DF800039BDC /* Person Details */,
 				CE645D8D286125CF00039BDC /* MainTabBarViewController */,
 				CE645D7F2860E21C00039BDC /* Persons List */,
 				CE645D6A286047AA00039BDC /* Episode Detail */,
@@ -294,6 +305,7 @@
 				CE645D51285DABDD00039BDC /* TVGGenreEntity.swift */,
 				CE645D652860274B00039BDC /* TVGEpisodeEntity.swift */,
 				CE645D8B2860F43A00039BDC /* TVGPersonEntity.swift */,
+				CE645D9F2861449100039BDC /* TVGPersonShowsEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,6 +393,17 @@
 				CE645D942861266B00039BDC /* TVGTabBarRouter.swift */,
 			);
 			path = MainTabBarViewController;
+			sourceTree = "<group>";
+		};
+		CE645D9628612DF800039BDC /* Person Details */ = {
+			isa = PBXGroup;
+			children = (
+				CE645D9728612E5D00039BDC /* TVGPersonDetailViewController.swift */,
+				CE645D9928612E7700039BDC /* TVGPersonDetailPresenter.swift */,
+				CE645D9B28612E8700039BDC /* TVGPersonDetailInteractor.swift */,
+				CE645D9D28612E9300039BDC /* TVGPersonDetailRouter.swift */,
+			);
+			path = "Person Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,6 +546,7 @@
 				CE645D782860D82800039BDC /* String+Extension.swift in Sources */,
 				CE645D952861266B00039BDC /* TVGTabBarRouter.swift in Sources */,
 				CE645D8A2860E76000039BDC /* TVGPersonsServices.swift in Sources */,
+				CE645D9E28612E9300039BDC /* TVGPersonDetailRouter.swift in Sources */,
 				CE645D7A2860D84100039BDC /* Sequence+Extension.swift in Sources */,
 				CE645D3D285D9CCA00039BDC /* TVGEntity.swift in Sources */,
 				CE645D2C285D5D3400039BDC /* TVGConstants.swift in Sources */,
@@ -547,6 +571,7 @@
 				CE645D832860E31100039BDC /* TVGPersonsListPresenter.swift in Sources */,
 				CE645D912861264800039BDC /* TVGTabBarPresenter.swift in Sources */,
 				CE645D29285D5CE500039BDC /* TVGEndpoint.swift in Sources */,
+				CE645D9A28612E7700039BDC /* TVGPersonDetailPresenter.swift in Sources */,
 				CE645D75286048E700039BDC /* TVGEpisodesServices.swift in Sources */,
 				CE645D47285DA37500039BDC /* TVGShowsServices.swift in Sources */,
 				CE645D812860E30000039BDC /* TVGPersonsListViewController.swift in Sources */,
@@ -557,6 +582,7 @@
 				CE645D37285D9B1400039BDC /* TVGView.swift in Sources */,
 				CE645D7C2860D8CA00039BDC /* TVGShowDetailViewController+UITableViewDelegate.swift in Sources */,
 				CE645D3B285D9BBC00039BDC /* TVGPresenter.swift in Sources */,
+				CE645DA02861449100039BDC /* TVGPersonShowsEntity.swift in Sources */,
 				CE645D662860274B00039BDC /* TVGEpisodeEntity.swift in Sources */,
 				CE645D59285FF15B00039BDC /* TVGShowsListHeaderTableView.swift in Sources */,
 				CE645D7E2860D90300039BDC /* TVGShowDetailViewController+UITableViewDataSource.swift in Sources */,
@@ -565,6 +591,8 @@
 				CE645D4A285DA3B900039BDC /* TVGShowEntity.swift in Sources */,
 				CE645D852860E36F00039BDC /* TVGPersonsListInteractor.swift in Sources */,
 				CE645D8C2860F43A00039BDC /* TVGPersonEntity.swift in Sources */,
+				CE645D9C28612E8700039BDC /* TVGPersonDetailInteractor.swift in Sources */,
+				CE645D9828612E5D00039BDC /* TVGPersonDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

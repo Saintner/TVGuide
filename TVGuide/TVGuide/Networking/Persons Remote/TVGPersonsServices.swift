@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-// - TVGShowsServicesProtocol takes networkManager as a IBKNetworkManagerProtocol property and
+// - TVGPersonsServicesProtocol takes networkManager as a IBKNetworkManagerProtocol property and
 // - fetchPosts method as AnyPublisher<IBKPosts,IBKError>
 protocol TVGPersonsServicesProtocol {
     var networkManager: TVGNetworkManagerProtocol { get set }
@@ -16,9 +16,11 @@ protocol TVGPersonsServicesProtocol {
     func fetchPersons(with page: Int) -> AnyPublisher<[TVGPersonEntity],TVGError>
     
     func fetchSearchedPersons(with text: String) -> AnyPublisher<[TVGSearchedPersonEntity],TVGError>
+    
+    func fetchPersonDetails(with id: Int) ->  AnyPublisher<[TVGPersonShowsEntity],TVGError> 
 }
 
-// - TVGShowsServices final class to handle Post entity Remote Services
+// - TVGPersonsServices final class to handle Post entity Remote Services
 final class TVGPersonsServices: TVGPersonsServicesProtocol {
     
     var networkManager: TVGNetworkManagerProtocol
@@ -35,5 +37,10 @@ final class TVGPersonsServices: TVGPersonsServicesProtocol {
     func fetchSearchedPersons(with text: String) -> AnyPublisher<[TVGSearchedPersonEntity],TVGError> {
         let endpoint = TVGEndpoint.searchPersons(with: text)
         return networkManager.fetchArray(type: [TVGSearchedPersonEntity].self, url: endpoint.url)
+    }
+    
+    func fetchPersonDetails(with id: Int) ->  AnyPublisher<[TVGPersonShowsEntity],TVGError> {
+        let endpoint = TVGEndpoint.personShows(with: id)
+        return networkManager.fetchArray(type: [TVGPersonShowsEntity].self, url: endpoint.url)
     }
 }

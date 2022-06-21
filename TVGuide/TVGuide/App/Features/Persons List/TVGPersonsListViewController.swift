@@ -27,13 +27,10 @@ class TVGPersonsListViewController: UIViewController, TVGView {
         let presenter = presenter as! TVGPersonsListPresenter
         presenter.viewDidLoad()
         self.navigationItem.title = "Persons"
-        self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {
-        setLeftIcon()
-//        setRightIcon()
         setTableView()
     }
     
@@ -46,30 +43,6 @@ class TVGPersonsListViewController: UIViewController, TVGView {
         let rightAnchor = NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
         let bottomAnchor = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([topAnchor, leftAnchor, rightAnchor, bottomAnchor])
-    }
-    
-//    func setRightIcon(){
-//        let favIcon = UIImage(systemName: "star")
-//        let favText = UIBarButtonItem(title: "Favorites", style: .plain, target: self, action: #selector(goToFavorites))
-//        let fav = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: #selector(goToFavorites))
-//        self.navigationItem.rightBarButtonItem = favText
-//    }
-//
-    func setLeftIcon(){
-        let favIcon = UIImage(systemName: "star")
-        let favText = UIBarButtonItem(title: "Shows", style: .plain, target: self, action: #selector(goToShows))
-//        let fav = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: #selector(goToFavorites))
-        self.navigationItem.leftBarButtonItem = favText
-    }
-    
-//    @objc func goToFavorites(){
-//        let presenter = presenter as! TVGShowsListPresenter
-//        presenter.goToFavorites()
-//    }
-//
-    @objc func goToShows(){
-        let presenter = presenter as! TVGPersonsListPresenter
-        presenter.goToShows()
     }
 
 

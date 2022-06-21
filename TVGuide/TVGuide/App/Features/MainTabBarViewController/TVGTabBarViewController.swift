@@ -16,27 +16,29 @@ class TVGTabBarViewController: UITabBarController, TVGView {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let presenter = presenter as! TVGTabBarPresenter
-        let tabOne = presenter.getShowsListViewController()
-               let tabOneBarItem = UITabBarItem(title: "Shows", image: nil, selectedImage: nil)
-        
-        tabOne.view.backgroundColor = .blue
-               tabOne.tabBarItem = tabOneBarItem
-               
-               
-               // Create Tab two
-        let tabTwo = presenter.getPersonsListViewController()
-        tabTwo.view.backgroundColor = .green
-               let tabTwoBarItem2 = UITabBarItem(title: "Persons", image: UIImage(named: "defaultImage2.png"), selectedImage: UIImage(named: "selectedImage2.png"))
-               
-               tabTwo.tabBarItem = tabTwoBarItem2
-               
-               
-               self.viewControllers = [tabOne, tabTwo]
+        if self.viewControllers?.count == nil {
+            let presenter = presenter as! TVGTabBarPresenter
+            let tabOne = presenter.getShowsListViewController()
+                   let tabOneBarItem = UITabBarItem(title: "Shows", image: nil, selectedImage: nil)
+            
+            tabOne.view.backgroundColor = .blue
+                   tabOne.tabBarItem = tabOneBarItem
+                   
+            
+                   // Create Tab two
+            let tabTwo = presenter.getPersonsListViewController()
+            tabTwo.view.backgroundColor = .green
+                   let tabTwoBarItem2 = UITabBarItem(title: "Persons", image: nil, selectedImage: nil)
+                   
+                   tabTwo.tabBarItem = tabTwoBarItem2
+                   
+                   
+                   self.viewControllers = [tabOne, tabTwo]
+            self.navigationItem.title = tabOneBarItem.title
+        }
     }
     
 
@@ -50,4 +52,10 @@ class TVGTabBarViewController: UITabBarController, TVGView {
     }
     */
 
+}
+
+extension TVGTabBarViewController: UITabBarControllerDelegate {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.navigationItem.title = item.title
+    }
 }

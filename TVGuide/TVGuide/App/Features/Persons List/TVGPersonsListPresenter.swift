@@ -29,18 +29,9 @@ class TVGPersonsListPresenter: TVGPresenter {
     private var currentPage: Int = 1
 
     func didSelect(index: Int) {
-//        guard let router = router as? TVGShowsListRouter else { return }
-//        let post = filteredPosts.count == 0 && !isSearchingFilteredPosts ? persons[index] : filteredPosts[index]
-//        router.routeToDetailPostViewController(with: post)
-    }
-    
-    func goToFavorites() {
-        
-    }
-    
-    func goToShows() {
         guard let router = router as? TVGPersonsListRouter else { return }
-        router.routeToShowsListViewController()
+        let post = filteredPersons.count == 0 && !isSearchingFilteredPersons ? persons[index] : filteredPersons[index]
+        router.routeToPersonsDetailViewController(with: post)
     }
     
     func getPostsCount() -> Int {
